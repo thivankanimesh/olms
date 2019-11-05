@@ -6,7 +6,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
             </div>
             <div class="modal-body">
-                <form action="author.php" method="POST">
+                <form action="author.php?page=<?php echo $page?>" method="POST">
                     <p>Are you sure to delete that?</p>
                     <input type="hidden" name="author_id" value="<?php echo $row['author_id']?>">
             </div>

@@ -27,12 +27,12 @@
         $page = 1;
     }
 
-    $resultCount = mysqli_query($con,"select count(author_id) from author inner join admin on admin.admin_id = author.author_id");
+    $resultCount = mysqli_query($con,"select count(author_id) from author inner join admin on admin.admin_id = author.admin_id");
     $rows_count = mysqli_fetch_array($resultCount);
 
     $author_count = $rows_count[0];
 
-    $items_per_page = 10;
+    $items_per_page = 2;
     $required_pages = ceil($author_count/$items_per_page); 
 
     $start = $items_per_page*$page -$items_per_page;

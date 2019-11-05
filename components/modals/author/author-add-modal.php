@@ -6,7 +6,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
             </div>
             <div class="modal-body">
-                <form action="author.php" method="POST" enctype="multipart/form-data">
+                <form action="author.php?page=<?php echo $page?>" method="POST" enctype="multipart/form-data">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label class="col-form-label" for="fname">First Name</label>
