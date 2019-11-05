@@ -1,9 +1,11 @@
 <?php 
     session_start();
 
-    $admin = $_SESSION["logged"];
+    if(isset($_SESSION["logged"])){
+        $admin = $_SESSION["logged"];
+    }
 
-    if(!$_SESSION["admin-logged"]){
+    if(!isset($_SESSION["admin-logged"])){
         header('Location:index.php');
     }
 
@@ -36,7 +38,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </head>
-<body background="resources/img/background2.jpg" style="background-size: 100%;">
+<body background="resources/img/background.jpg" style="background-size: 100%;">
     <div class="container">
         <div class="row">
             <div class="col">
