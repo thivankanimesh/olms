@@ -23,6 +23,24 @@
     $user_array = mysqli_fetch_array($user_result);
     $user_count = $user_array[0];
 
+    // Getting ebook count
+    $query = "select count(ebook_id) from ebook inner join admin on admin.admin_id = ebook.admin_id";
+    $ebook_result = mysqli_query($con,$query);
+    $ebook_array = mysqli_fetch_array($ebook_result);
+    $ebook_count = $ebook_array[0];
+
+    // Getting author count
+    $query = "select count(author_id) from author inner join admin on admin.admin_id = author.admin_id";
+    $author_result = mysqli_query($con,$query);
+    $author_array = mysqli_fetch_array($author_result);
+    $author_count = $author_array[0];
+
+    // Getting publisher count
+    $query = "select count(publisher_id) from publisher inner join admin on admin.admin_id = publisher.publisher_id";
+    $publisher_result = mysqli_query($con,$query);
+    $publisher_array = mysqli_fetch_array($publisher_result);
+    $publisher_count = $publisher_array[0];
+
 ?>
 
 <!DOCTYPE html>
@@ -57,6 +75,36 @@
                         <div class="card-body">
                             <h1><?php echo $user_count?></h1>
                             <h6>Total Users</h6>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm" style="padding-right: 2px;">
+                <a href="" style="text-decoration: none;">
+                    <div class="card text-white bg-danger mb-3" style="max-width: 25rem;">
+                        <div class="card-body">
+                            <h1><?php echo $ebook_count?></h1>
+                            <h6>Total Ebooks</h6>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm" style="padding-right: 2px;">
+                <a href="author.php" style="text-decoration: none;">
+                    <div class="card text-white bg-primary mb-3" style="max-width: 25rem;">
+                        <div class="card-body">
+                            <h1><?php echo $author_count?></h1>
+                            <h6>Total Authors</h6>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm" style="padding-right: 2px;">
+                <a href="" style="text-decoration: none;">
+                    <div class="card text-white bg-success mb-3" style="max-width: 25rem;">
+                        <div class="card-body">
+                            <h1><?php echo $publisher_count?></h1>
+                            <h6>Total Publishers</h6>
                         </div>
                     </div>
                 </a>
