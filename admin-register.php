@@ -25,7 +25,7 @@
         header('Location:error.php');
     }else{
 
-        // Creating directories
+        // Creating Propic Directory
         if(!file_exists("resources/uploads/propics/admins/")){
             mkdir("resources/uploads/propics/admins/",0777,true);
             exec("sudo chmod -R 777 resources/uploads/propics/admins/");
@@ -52,8 +52,15 @@
         // Set admin id as session
         $result = mysqli_query($con,"select admin_id from admin where email = '$email'");
         $row = $result->fetch_object();
-        $_SESSION["logged"]=$row->uid;
-        mysqli_close($con);
+        $_SESSION["admin-logged"]=$row->admin_id;
+        
+        // Create Other Essential Directories
+        if(!file_exists("resources/uploads/admins/admin/admin".$row->admin_id)){
+            mkdir("resources/uploads/admins/admin".$row->admin_id,0777,true);
+            exec("sudo chmod -R 777 resources/uploads/admins/admin".$row->admin_id);
+        }else{
+            exec("sudo chmod -R 777 resources/uploads/admins/admin".$row->admin_id);
+        }
 
         header('Location:dashboard.php');
     }   
