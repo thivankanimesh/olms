@@ -23,7 +23,7 @@
         $page = 1;
     }
 
-    $resultCount = mysqli_query($con,"select count(user_id) from user inner join admin on admin.admin_id = user.user_id");
+    $resultCount = mysqli_query($con,"select count(user_id) from user");
     $rows_count = mysqli_fetch_array($resultCount);
 
     $user_count = $rows_count[0];
