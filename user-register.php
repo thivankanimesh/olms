@@ -8,6 +8,8 @@
 
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
+    $birthday = $_POST['birthday'];
+    $gender = $_POST['ugender'];
     $email = $_POST['email'];
     $mobile = $_POST['mobile'];
     $password = $_POST['password'];
@@ -46,7 +48,7 @@
         $encrypted_password = password_hash($password, PASSWORD_BCRYPT, array('cost'=>12));
 
         // Inserting to the database
-        $query = "insert into user (fname,lname,email,password,mobile,propic) values ('$fname','$lname','$email','$encrypted_password','$mobile','$file_name')";
+        $query = "insert into user (fname,lname,birthday,gender,email,password,mobile,propic) values ('$fname','$lname','$birthday','$gender','$email','$encrypted_password','$mobile','$file_name')";
         mysqli_query($con,$query);
         
         // Set user id as session

@@ -17,6 +17,24 @@
                             <input class="form-control" name="lname" type="text" placeholder="Enter Last Name" required/>
                         </div>
                     </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="col-form-label" for="birthday">Birthday</label>
+                            <input class="form-control" type="date" name="birthday" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="col-from-label" for="ugender">Gender</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ugender" value="Male" required />
+                                <label class="form-check-label" for="">Male</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ugender" value="Female" required />
+                                <label class="form-check-label" for="">Female</label>
+                            </div>
+                        </div>
+                    </div>
                     
                     <div class="form-group">
                         <label class="col-form-label" for="email">Enter Email</label>

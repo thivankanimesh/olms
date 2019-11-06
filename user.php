@@ -53,6 +53,47 @@
     foreach($row_list as $row){}
 ?>
 
+<?php 
+    if(isset($_POST['form-update-user'])){
+
+        $fname = $_POST['fname'];
+        $lname = $_POST['lname'];
+        $birthday = $_POST['birthday'];
+        $gender = $_POST['ugender'];
+        $mobile = $_POST['mobile'];
+        $email = $_POST['email'];
+        $propic = $_FILES['propic'];
+
+        if($propic['name']!=""){
+
+            // Uploading profile picture
+            $target_dir = "resources/uploads/propics/users/";
+            $file_name = rand(1,100000000000).$propic['name'];
+            $target_file = $target_dir.basename($file_name);
+
+            if(file_exists($target_dir.basename($row['propic']))){
+                unlink($target_dir.basename($row['propic']));
+                move_uploaded_file($propic['tmp_name'],$target_file);
+            }
+
+            // Update Data
+            $query = "update user set fname='$fname',lname='$lname',birthday='$birthday',gender='$gender',mobile='$mobile',email='$email',propic='$file_name' where user_id=".$row['user_id'];
+
+            mysqli_query($con,$query);
+
+        }else{
+            
+            // Update Data
+            $query = "update user set fname='$fname',lname='$lname',birthday='$birthday',gender='$gender',mobile='$mobile',email='$email' where user_id=".$row['user_id'];
+
+            mysqli_query($con,$query);
+
+        }
+
+        header('Location: user.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,11 +152,15 @@
                                     echo '<td>'.$row['email'].'</td>';
                                     echo '<div class="float-right">';
                                         echo '<td>';
-                                            echo '<button class="btn btn-warning" style="margin-right:10px" type="button" data-toggle="modal" data-target="#user-view-modal'.$row['sid'].'">View</button>';
-                                            echo '<button class="btn btn-success" style="margin-right:10px" type="button" data-toggle="modal" data-target="#user-update-modal'.$row['sid'].'">Update</button>';
-                                            echo '<button class="btn btn-danger" style="margin-right:10px" type="button" data-toggle="modal" data-target="#user-delete-modal'.$row['sid'].'">Delete</button>';
+                                            echo '<button class="btn btn-warning" style="margin-right:10px" type="button" data-toggle="modal" data-target="#user-view-modal'.$row['user_id'].'">View</button>';
+                                            echo '<button class="btn btn-success" style="margin-right:10px" type="button" data-toggle="modal" data-target="#user-update-modal'.$row['user_id'].'">Update</button>';
+                                            echo '<button class="btn btn-danger" style="margin-right:10px" type="button" data-toggle="modal" data-target="#user-delete-modal'.$row['user_id'].'">Delete</button>';
                                         echo '</td>';
                                     echo '</div>';
+
+                                    require "components/modals/user/user-view-modal.php";
+                                    require "components/modals/user/user-update-modal.php";
+
                                 echo '</tr>';
                                 $index++; 
                             }
