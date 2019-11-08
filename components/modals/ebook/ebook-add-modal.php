@@ -1,3 +1,32 @@
+<?php 
+    // Getting Author List
+    $author_row_list = array();
+    $query = "select*from author where admin_id=".$admin;
+    $author_result = mysqli_query($con,$query);
+
+    while($author_array = mysqli_fetch_array($author_result)){
+        $author_row_list[] = $author_array;
+    }
+    
+    // Getting Category List
+    $category_row_list = array();
+    $query = "select*from category where admin_id=".$admin;
+    $category_result = mysqli_query($con,$query);
+
+    while($category_array = mysqli_fetch_array($category_result)){
+        $category_row_list[] = $category_array;
+    }
+
+    // Getting Publisher List
+    $publisher_row_list = array();
+    $query = "select*from publisher where admin_id=".$admin;
+    $publisher_result = mysqli_query($con,$query);
+
+    while($publisher_array = mysqli_fetch_array($publisher_result)){
+        $publisher_row_list[] = $publisher_array;
+    }
+?>
+
 <div class="modal fade bd-example-modal-lg" id="ebook-add-modal" tabindex="-1" role="dialog" aria-labelledby="author-add-modal-label" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -13,15 +42,37 @@
                             <input class="form-control" name="title" type="text" placeholder="Enter eBook Title" required/>
                         </div>
                         <div class="form-group col-md-6">
-                            <label class="col-form-label" for="catergory">Catergory</label>
-                            <input class="form-control" name="catergory" type="text" placeholder="Enter Catergory" required/>
+                            <label class="col-form-label" for="category_id">Category</label>
+                            <select class="form-control" name="category_id" required>
+                                <?php
+                                    foreach($category_row_list as $category){
+                                        echo '<option value="'.$category['category_id'].'">'.$category['name'].'</option>';
+                                    }
+                                ?>
+                            </select>
                         </div>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label class="col-form-label" for="author">Author</label>
-                            <input class="form-control" name="author" type="text" placeholder="Enter Author" required />
+                            <label class="col-form-label" for="author_id">Author</label>
+                            <select class="form-control" name="author_id" required>
+                                <?php 
+                                    foreach($author_row_list as $author){
+                                        echo '<option value="'.$author['author_id'].'">'.$author['fname'].' '.$author['lname'].'</option>';
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col-form-label" for="publisher_id">Publisher</label>
+                            <select class="form-control" name="publisher_id" required>
+                                <?php
+                                    foreach($publisher_row_list as $publisher){
+                                        echo '<option value="'.$publisher['publisher_id'].'">'.$publisher['fname'].' '.$publisher['lname'].'</option>';
+                                    }
+                                ?>
+                            </select>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="col-form-label" for="price">Price</label>

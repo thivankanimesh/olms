@@ -1,11 +1,11 @@
 <?php 
     session_start();
 
-    if(isset($_SESSION["logged"])){
-        $admin = $_SESSION["logged"];
-    }
+    $admin;
 
-    if(!isset($_SESSION["admin-logged"])){
+    if(isset($_SESSION["admin-logged"])){
+        $admin = $_SESSION["admin-logged"];
+    }else{
         header('Location:index.php');
     }
 
@@ -24,19 +24,19 @@
     $user_count = $user_array[0];
 
     // Getting ebook count
-    $query = "select count(ebook_id) from ebook inner join admin on admin.admin_id = ebook.admin_id";
+    $query = "select count(ebook_id) from ebook inner join admin on admin.admin_id = ebook.admin_id where ebook.admin_id=".$admin;
     $ebook_result = mysqli_query($con,$query);
     $ebook_array = mysqli_fetch_array($ebook_result);
     $ebook_count = $ebook_array[0];
 
     // Getting author count
-    $query = "select count(author_id) from author inner join admin on admin.admin_id = author.admin_id";
+    $query = "select count(author_id) from author inner join admin on admin.admin_id = author.admin_id where author.admin_id=".$admin;
     $author_result = mysqli_query($con,$query);
     $author_array = mysqli_fetch_array($author_result);
     $author_count = $author_array[0];
 
     // Getting publisher count
-    $query = "select count(publisher_id) from publisher inner join admin on admin.admin_id = publisher.publisher_id";
+    $query = "select count(publisher_id) from publisher inner join admin on admin.admin_id = publisher.publisher_id where publisher.admin_id=".$admin;
     $publisher_result = mysqli_query($con,$query);
     $publisher_array = mysqli_fetch_array($publisher_result);
     $publisher_count = $publisher_array[0];
