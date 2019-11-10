@@ -38,7 +38,7 @@
 
 <?php
     $row_list = array();
-    $result = mysqli_query($con,"select ebook.*, author.fname as author_fname, author.lname as author_lname, publisher.fname as publisher_fname, publisher.lname as publisher_lname from ebook inner join admin on admin.admin_id = ebook.admin_id inner join author on ebook.author_id = author.author_id inner join publisher on publisher.publisher_id = ebook.publisher_id limit $start, $end");
+    $result = mysqli_query($con,"select ebook.*, author.author_id as author_author_id, author.fname as author_fname, author.lname as author_lname, publisher.publisher_id as publisher_publisher_id, publisher.fname as publisher_fname, publisher.lname as publisher_lname, category.category_id as category_category_id, category.name as category_name from ebook inner join admin on admin.admin_id = ebook.admin_id inner join author on ebook.author_id = author.author_id inner join publisher on publisher.publisher_id = ebook.publisher_id inner join category on category.admin_id = admin.admin_id limit $start, $end");
 
     while($row = mysqli_fetch_array($result)){
         $row_list[] = $row;
@@ -161,17 +161,19 @@
                                     echo '<th scope="row">'.$index.'</th>';
                                     echo '<td><img src="resources/uploads/admins/admin'.$row['admin_id'].'/ebooks/coverpic/'.$row['cover_pic'].'" style="border-radius:50%" weidth="50px" height="50px" /></td>';
                                     echo '<td>'.$row["title"].'</td>';
-                                    echo '<td>'.$row['category_id'].'</td>';
+                                    echo '<td>'.$row['category_name'].'</td>';
                                     echo '<td>'.$row['description'].'</td>';
-                                    echo '<td>'.$row['author_id'].'</td>';
+                                    echo '<td>'.$row['author_fname'].' '.$row['author_lname'].'</td>';
                                     echo '<td>'.$row['price'].'</td>';
                                     echo '<div class="float-right">';
                                         echo '<td>';
-                                            echo '<button class="btn btn-warning" style="margin-right:10px" type="button" dapropicpropicpropicpropicta-toggle="modal" data-target="#user-view-modal'.$row['ebook_id'].'">View</button>';
-                                            echo '<button class="btn btn-success" style="margin-right:10px" type="button" data-toggle="modal" data-target="#user-update-modal'.$row['ebook_id'].'">Update</button>';
-                                            echo '<button class="btn btn-danger" style="margin-right:10px" type="button" data-toggle="modal" data-target="#user-delete-modal'.$row['ebook_id'].'">Delete</button>';
+                                            echo '<button class="btn btn-warning" style="margin-right:10px" type="button" dapropicpropicpropicpropicta-toggle="modal" data-target="#ebook-view-modal'.$row['ebook_id'].'">View</button>';
+                                            echo '<button class="btn btn-success" style="margin-right:10px" type="button" data-toggle="modal" data-target="#ebook-update-modal'.$row['ebook_id'].'">Update</button>';
+                                            echo '<button class="btn btn-danger" style="margin-right:10px" type="button" data-toggle="modal" data-target="#ebook-delete-modal'.$row['ebook_id'].'">Delete</button>';
                                         echo '</td>';
                                     echo '</div>';
+
+                                    require "components/modals/ebook/ebook-update-modal.php";
 
                                 echo '</tr>';
                                 $index++; 
