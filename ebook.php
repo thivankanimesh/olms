@@ -169,6 +169,18 @@
 
         header('Location:ebook.php?page='.$page);
 
+    }else if(isset($_POST['form-delete-ebook'])){
+
+        $ebook_id = $_POST['ebook_id'];
+
+        unlink("resources/uploads/admins/admin$admin/ebooks/coverpic/".basename($row['cover_pic']));
+        unlink("resources/uploads/admins/admin$admin/ebooks/pdf/".basename($row['pdf_name']));
+
+        $query = "delete from ebook where ebook_id=".$ebook_id;
+        mysqli_query($con,$query);
+
+        header('Location:ebook.php?page='.$page);
+
     }
 
 ?>
@@ -248,6 +260,7 @@
                                     echo '</div>';
 
                                     require "components/modals/ebook/ebook-update-modal.php";
+                                    require "components/modals/ebook/ebook-delete-modal.php";
 
                                 echo '</tr>';
                                 $index++; 
