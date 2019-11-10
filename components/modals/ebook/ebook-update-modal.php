@@ -100,11 +100,11 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label class="col-form-label" for="coverpic">Choose Cover Picture</label>
-                            <input class="form-control" name="coverpic" type="file" required />
+                            <input class="form-control" name="coverpic" type="file" />
                         </div>
                         <div class="form-group col-md-6">
                             <label class="col-form-label" for="pdf">Choose Pdf</label>
-                            <input class="form-control" name="pdf" type="file" required />
+                            <input class="form-control" name="pdf" type="file" />
                         </div>
                     </div>
 

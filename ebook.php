@@ -95,6 +95,80 @@
 
         header('Location:ebook.php?page='.$page);
 
+    }else if(isset($_POST['form-update-ebook'])){
+
+        $ebook_id = $_POST['ebook_id'];
+        $title = $_POST['title'];
+        $category_id = $_POST['category_id'];
+        $author_id = $_POST['author_id'];
+        $publisher_id = $_POST['publisher_id'];
+        $price = $_POST['price'];
+        $description = $_POST['description'];
+        $coverpic = $_FILES['coverpic'];
+        $pdf = $_FILES['pdf'];
+
+        $coverpic_name;
+        $pdf_name;
+
+        if($coverpic['name']==""&&$pdf['name']==""){
+
+            $query = "update ebook set title='$title', category_id=$category_id, author_id=$author_id, publisher_id=$publisher_id, price='$price', description='$description' where ebook_id=".$ebook_id;
+            mysqli_query($con,$query);
+
+        }else if($coverpic['name']!=""&&$pdf['name']!=""){
+
+            $coverpic_name = rand(1,100000000000).$coverpic['name'];
+            $pdf_name = rand(1,100000000000).$pdf['name'];
+
+            $target_dir_for_coverpic = "resources/uploads/admins/admin$admin/ebooks/coverpic/";
+            $target_dir_for_pdf = "resources/uploads/admins/admin$admin/ebooks/pdf/";
+
+            $target_coverpic = $target_dir_for_coverpic.basename($coverpic_name);
+            $target_pdf = $target_dir_for_pdf.basename($pdf_name);
+
+            unlink($target_dir_for_coverpic.basename($row['cover_pic']));
+            unlink($target_dir_for_pdf.basename($row['pdf_name']));
+
+            move_uploaded_file($coverpic['tmp_name'],$target_coverpic);
+            move_uploaded_file($pdf['tmp_name'],$target_pdf);
+
+            $query = "update ebook set title='$title', category_id=$category_id, author_id=$author_id, publisher_id=$publisher_id, price='$price', description='$description', cover_pic='$coverpic_name', pdf_name='$pdf_name' where ebook_id=".$ebook_id;
+            mysqli_query($con,$query);
+
+        }else if($coverpic['name']!=""){
+
+            $coverpic_name = rand(1,100000000000).$coverpic['name'];
+
+            $target_dir_for_coverpic = "resources/uploads/admins/admin$admin/ebooks/coverpic/";
+
+            $target_coverpic = $target_dir_for_coverpic.basename($coverpic_name);
+
+            unlink($target_dir_for_coverpic.basename($row['cover_pic']));
+
+            move_uploaded_file($coverpic['tmp_name'],$target_coverpic);
+
+            $query = "update ebook set title='$title', category_id=$category_id, author_id=$author_id, publisher_id=$publisher_id, price='$price', description='$description', cover_pic='$coverpic_name' where ebook_id=".$ebook_id;
+            mysqli_query($con,$query);
+
+        }else if($pdf['name']!=""){
+
+            $pdf_name = rand(1,100000000000).$pdf['name'];
+
+            $target_dir_for_pdf = "resources/uploads/admins/admin$admin/ebooks/pdf/";
+
+            $target_pdf = $target_dir_for_pdf.basename($pdf_name);
+
+            unlink($target_dir_for_pdf.basename($row['pdf_name']));
+
+            move_uploaded_file($pdf['tmp_name'],$target_pdf);
+
+            $query = "update ebook set title='$title', category_id=$category_id, author_id=$author_id, publisher_id=$publisher_id, price='$price', description='$description', pdf_name='$pdf_name' where ebook_id=".$ebook_id;
+            mysqli_query($con,$query);
+
+        }
+
+        header('Location:ebook.php?page='.$page);
+
     }
 
 ?>
