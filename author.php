@@ -1,36 +1,29 @@
 <?php
     session_start();
 
-    $admin;
+    $admin_id;
 
     if(isset($_SESSION["admin-logged"])){
-        $admin = $_SESSION["admin-logged"];
-    }
-
-    if(!$_SESSION["admin-logged"]){
+        $admin_id = $_SESSION["admin-logged"];
+    }else{
         header('Location:index.php');
     }
 
     include "database.php";
-
 ?>
 
 <?php
 
-    $page = "";
+    $page = 1;
     
     if(isset($_GET['page'])){
         $page = $_GET['page'];
     }
 
-    if($page == ""){
-        $page = 1;
-    }
+    $result = mysqli_query($con,"select count(author_id) from author inner join admin on admin.admin_id = author.admin_id");
+    $rows_array = mysqli_fetch_array($result);
 
-    $resultCount = mysqli_query($con,"select count(author_id) from author inner join admin on admin.admin_id = author.admin_id");
-    $rows_count = mysqli_fetch_array($resultCount);
-
-    $author_count = $rows_count[0];
+    $author_count = $rows_array[0];
 
     $items_per_page = 2;
     $required_pages = ceil($author_count/$items_per_page); 
@@ -41,19 +34,11 @@
 
 <?php
     $row_list = array();
-    $result = mysqli_query($con,"select*from author where admin_id = $admin limit $start, $end");
+    $result = mysqli_query($con,"select*from author where admin_id = $admin_id limit $start, $end");
 
     while($row = mysqli_fetch_array($result)){
         $row_list[] = $row;
     }
-
-    $rows = $result->fetch_array();
-
-?>
-
-<?php
-    $row;
-    foreach($row_list as $row){}
 ?>
 
 <?php 
@@ -64,8 +49,7 @@ if(isset($_POST["form-add-author"])){
     $lname = $_POST['lname'];
     $email = $_POST['email'];
 
-    // Insert Data
-    $query = "insert into author (fname,lname,email,admin_id) values ('$fname','$lname','$email',$admin)";
+    $query = "insert into author (fname,lname,email,admin_id) values ('$fname','$lname','$email',$admin_id)";
 
     mysqli_query($con,$query);
 
@@ -78,7 +62,6 @@ if(isset($_POST["form-add-author"])){
     $lname = $_POST['lname'];
     $email = $_POST['email'];
 
-    // Update Data
     $query = "update author set fname='$fname', lname='$lname', email='$email' where author_id=$author_id";
 
     mysqli_query($con,$query);
@@ -89,7 +72,6 @@ if(isset($_POST["form-add-author"])){
 
     $author_id = $_POST['author_id'];
 
-    // Delete Data
     $query = "delete from author where author_id=$author_id";
 
     mysqli_query($con,$query);
