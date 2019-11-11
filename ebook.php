@@ -1,7 +1,8 @@
 <?php
+
     session_start();
 
-    $admin = $_SESSION["admin-logged"];
+    $admin_id = $_SESSION["admin-logged"];
 
     if(!$_SESSION["admin-logged"]){
         header('Location:index.php');
@@ -13,20 +14,16 @@
 
 <?php
 
-    $page = "";
+    $page = 1;
 
     if(isset($_GET['page'])){
         $page = $_GET['page'];
     }
 
-    if($page == ""){
-        $page = 1;
-    }
+    $result = mysqli_query($con,"select count(ebook_id) from ebook inner join admin on admin.admin_id = ebook.admin_id");
+    $rows_array = mysqli_fetch_array($result);
 
-    $resultCount = mysqli_query($con,"select count(ebook_id) from ebook inner join admin on admin.admin_id = ebook.admin_id");
-    $rows_count = mysqli_fetch_array($resultCount);
-
-    $ebook_count = $rows_count[0];
+    $ebook_count = $rows_array[0];
 
     $items_per_page = 10;
     $required_pages = ceil($ebook_count/$items_per_page); 
@@ -37,20 +34,14 @@
 ?>
 
 <?php
+
     $row_list = array();
+
     $result = mysqli_query($con,"select ebook.*, author.author_id as author_author_id, author.fname as author_fname, author.lname as author_lname, publisher.publisher_id as publisher_publisher_id, publisher.fname as publisher_fname, publisher.lname as publisher_lname, category.category_id as category_category_id, category.name as category_name from ebook inner join admin on admin.admin_id = ebook.admin_id inner join author on ebook.author_id = author.author_id inner join publisher on publisher.publisher_id = ebook.publisher_id inner join category on category.admin_id = admin.admin_id limit $start, $end");
 
     while($row = mysqli_fetch_array($result)){
         $row_list[] = $row;
     }
-
-    $rows = $result->fetch_array();
-
-?>
-
-<?php
-    $row;
-    foreach($row_list as $row){}
 ?>
 
 <?php
@@ -70,7 +61,7 @@
         $pdf_name;
         
         if($coverpic['name']!=""){
-            $target_dir = "resources/uploads/admins/admin$admin/ebooks/coverpic/";
+            $target_dir = "resources/uploads/admins/admin$admin_id/ebooks/coverpic/";
             $file_name = rand(1,100000000000).$coverpic['name'];
             $coverpic_name = $file_name;
             $target_file = $target_dir.basename($file_name);
@@ -80,7 +71,7 @@
         }
 
         if($pdf['name']!=""){
-            $target_dir = "resources/uploads/admins/admin$admin/ebooks/pdf/";
+            $target_dir = "resources/uploads/admins/admin$admin_id/ebooks/pdf/";
             $file_name = rand(1,100000000000).$pdf['name'];
             $pdf_name = $file_name;
             $target_file = $target_dir.basename($file_name);
@@ -89,8 +80,7 @@
             }
         }
 
-        // Inserting Data
-        $query = "insert into ebook (title,category_id,author_id,publisher_id,price,description,cover_pic,pdf_name,admin_id) values ('$title',$category_id,$author_id,$publisher_id,$price,'$description','$coverpic_name','$pdf_name',$admin)";
+        $query = "insert into ebook (title,category_id,author_id,publisher_id,price,description,cover_pic,pdf_name,admin_id) values ('$title',$category_id,$author_id,$publisher_id,$price,'$description','$coverpic_name','$pdf_name',$admin_id)";
         mysqli_query($con,$query);
 
         header('Location:ebook.php?page='.$page);
@@ -120,8 +110,8 @@
             $coverpic_name = rand(1,100000000000).$coverpic['name'];
             $pdf_name = rand(1,100000000000).$pdf['name'];
 
-            $target_dir_for_coverpic = "resources/uploads/admins/admin$admin/ebooks/coverpic/";
-            $target_dir_for_pdf = "resources/uploads/admins/admin$admin/ebooks/pdf/";
+            $target_dir_for_coverpic = "resources/uploads/admins/admin$admin_id/ebooks/coverpic/";
+            $target_dir_for_pdf = "resources/uploads/admins/admin$admin_id/ebooks/pdf/";
 
             $target_coverpic = $target_dir_for_coverpic.basename($coverpic_name);
             $target_pdf = $target_dir_for_pdf.basename($pdf_name);
@@ -139,7 +129,7 @@
 
             $coverpic_name = rand(1,100000000000).$coverpic['name'];
 
-            $target_dir_for_coverpic = "resources/uploads/admins/admin$admin/ebooks/coverpic/";
+            $target_dir_for_coverpic = "resources/uploads/admins/admin$admin_id/ebooks/coverpic/";
 
             $target_coverpic = $target_dir_for_coverpic.basename($coverpic_name);
 
@@ -154,7 +144,7 @@
 
             $pdf_name = rand(1,100000000000).$pdf['name'];
 
-            $target_dir_for_pdf = "resources/uploads/admins/admin$admin/ebooks/pdf/";
+            $target_dir_for_pdf = "resources/uploads/admins/admin$admin_id/ebooks/pdf/";
 
             $target_pdf = $target_dir_for_pdf.basename($pdf_name);
 
@@ -173,8 +163,8 @@
 
         $ebook_id = $_POST['ebook_id'];
 
-        unlink("resources/uploads/admins/admin$admin/ebooks/coverpic/".basename($row['cover_pic']));
-        unlink("resources/uploads/admins/admin$admin/ebooks/pdf/".basename($row['pdf_name']));
+        unlink("resources/uploads/admins/admin$admin_id/ebooks/coverpic/".basename($row['cover_pic']));
+        unlink("resources/uploads/admins/admin$admin_id/ebooks/pdf/".basename($row['pdf_name']));
 
         $query = "delete from ebook where ebook_id=".$ebook_id;
         mysqli_query($con,$query);
