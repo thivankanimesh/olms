@@ -2,9 +2,9 @@
 
     session_start();
 
-    $admin_id = $_SESSION["admin-logged"];
-
-    if(!$_SESSION["admin-logged"]){
+    if(isset($_SESSION["admin-logged"])){
+        $admin_id = $_SESSION["admin-logged"];
+    }else{
         header('Location:index.php');
     }
 
