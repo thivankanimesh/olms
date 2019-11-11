@@ -1,9 +1,12 @@
 <?php
+
     session_start();
 
-    $admin = $_SESSION["admin-logged"];
+    $admin_id;
 
-    if(!$_SESSION["admin-logged"]){
+    if(isset($_SESSION["admin-logged"])){
+        $admin_id = $_SESSION["admin-logged"];
+    }else{
         header('Location:index.php');
     }
 
@@ -13,20 +16,16 @@
 
 <?php
 
-    $page = "";
+    $page = 1;
 
     if(isset($_GET['page'])){
         $page = $_GET['page'];
     }
 
-    if($page == ""){
-        $page = 1;
-    }
+    $result = mysqli_query($con,"select count(user_id) from user");
+    $rows_array = mysqli_fetch_array($result);
 
-    $resultCount = mysqli_query($con,"select count(user_id) from user");
-    $rows_count = mysqli_fetch_array($resultCount);
-
-    $user_count = $rows_count[0];
+    $user_count = $rows_array[0];
 
     $items_per_page = 10;
     $required_pages = ceil($user_count/$items_per_page); 
@@ -37,23 +36,17 @@
 ?>
 
 <?php
+
     $row_list = array();
     $result = mysqli_query($con,"select*from user limit $start, $end");
 
     while($row = mysqli_fetch_array($result)){
         $row_list[] = $row;
     }
-
-    $rows = $result->fetch_array();
-
-?>
-
-<?php
-    $row;
-    foreach($row_list as $row){}
 ?>
 
 <?php 
+
     if(isset($_POST['form-update-user'])){
 
         $fname = $_POST['fname'];
@@ -66,31 +59,26 @@
 
         if($propic['name']!=""){
 
-            // Uploading profile picture
-            $target_dir = "resources/uploads/propics/users/";
-            $file_name = rand(1,100000000000).$propic['name'];
-            $target_file = $target_dir.basename($file_name);
+            $target_dir_for_propic = "resources/uploads/propics/users/";
+            $propic_name = rand(1,100000000000).$propic['name'];
+            $target_propic = $target_dir_for_propic.basename($propic_name);
 
-            if(file_exists($target_dir.basename($row['propic']))){
-                unlink($target_dir.basename($row['propic']));
-                move_uploaded_file($propic['tmp_name'],$target_file);
-            }
+            unlink($target_dir_for_propic.basename($row['propic']));
+            move_uploaded_file($propic['tmp_name'],$target_propic);
 
-            // Update Data
-            $query = "update user set fname='$fname',lname='$lname',birthday='$birthday',gender='$gender',mobile='$mobile',email='$email',propic='$file_name' where user_id=".$row['user_id'];
+            $query = "update user set fname='$fname',lname='$lname',birthday='$birthday',gender='$gender',mobile='$mobile',email='$email',propic='$propic_name' where user_id=".$row['user_id'];
 
             mysqli_query($con,$query);
 
         }else{
-            
-            // Update Data
+
             $query = "update user set fname='$fname',lname='$lname',birthday='$birthday',gender='$gender',mobile='$mobile',email='$email' where user_id=".$row['user_id'];
 
             mysqli_query($con,$query);
 
         }
 
-        header('Location: user.php');
+        header('Location:user.php?page='.$page);
     }
 ?>
 
