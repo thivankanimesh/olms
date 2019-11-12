@@ -36,7 +36,7 @@
     $author_count = $author_array[0];
 
     // Getting publisher count
-    $query = "select count(publisher_id) from publisher inner join admin on admin.admin_id = publisher.publisher_id where publisher.admin_id=".$admin;
+    $query = "select count(publisher_id) from publisher inner join admin on admin.admin_id = publisher.admin_id where publisher.admin_id=".$admin;
     $publisher_result = mysqli_query($con,$query);
     $publisher_array = mysqli_fetch_array($publisher_result);
     $publisher_count = $publisher_array[0];
