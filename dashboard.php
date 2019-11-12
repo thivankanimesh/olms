@@ -100,7 +100,7 @@
                 </a>
             </div>
             <div class="col-sm" style="padding-right: 2px;">
-                <a href="" style="text-decoration: none;">
+                <a href="publisher.php" style="text-decoration: none;">
                     <div class="card text-white bg-success mb-3" style="max-width: 25rem;">
                         <div class="card-body">
                             <h1><?php echo $publisher_count?></h1>
