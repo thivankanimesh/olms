@@ -243,12 +243,13 @@
                                     echo '<td>'.$row['price'].'</td>';
                                     echo '<div class="float-right">';
                                         echo '<td>';
-                                            echo '<button class="btn btn-warning" style="margin-right:10px" type="button" dapropicpropicpropicpropicta-toggle="modal" data-target="#ebook-view-modal'.$row['ebook_id'].'">View</button>';
+                                            echo '<button class="btn btn-warning" style="margin-right:10px" type="button" data-toggle="modal" data-target="#ebook-view-modal'.$row['ebook_id'].'">View</button>';
                                             echo '<button class="btn btn-success" style="margin-right:10px" type="button" data-toggle="modal" data-target="#ebook-update-modal'.$row['ebook_id'].'">Update</button>';
                                             echo '<button class="btn btn-danger" style="margin-right:10px" type="button" data-toggle="modal" data-target="#ebook-delete-modal'.$row['ebook_id'].'">Delete</button>';
                                         echo '</td>';
                                     echo '</div>';
 
+                                    require "components/modals/ebook/ebook-view-modal.php";
                                     require "components/modals/ebook/ebook-update-modal.php";
                                     require "components/modals/ebook/ebook-delete-modal.php";
 
