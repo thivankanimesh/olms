@@ -55,17 +55,17 @@
         $_SESSION["admin-logged"]=$row->admin_id;
         
         // Create Other Essential Directories
-        if(!file_exists("resources/uploads/admins/admin/admin".$row->admin_id)){
-            mkdir("resources/uploads/admins/admin".$row->admin_id,0777,true);
-            mkdir("resources/uploads/admins/admin".$row->admin_id."/ebooks/coverpic",0777,true);
-            mkdir("resources/uploads/admins/admin".$row->admin_id."/ebooks/pdf",0777,true);
-            exec("sudo chmod -R 777 resources/uploads/admins/admin".$row->admin_id);
-            exec("sudo chmod -R 777 resources/uploads/admins/admin".$row->admin_id."/ebooks/coverpic");
-            exec("sudo chmod -R 777 resources/uploads/admins/admin".$row->admin_id."/ebooks/pdf");
+        if(!file_exists("resources/uploads/admins")){
+            mkdir("resources/uploads/admins",0777,true);
+            mkdir("resources/uploads/admins/ebooks/coverpic",0777,true);
+            mkdir("resources/uploads/admins/ebooks/pdf",0777,true);
+            exec("sudo chmod -R 777 resources/uploads/admins");
+            exec("sudo chmod -R 777 resources/uploads/admins/ebooks/coverpic");
+            exec("sudo chmod -R 777 resources/uploads/admins/ebooks/pdf");
         }else{
-            exec("sudo chmod -R 777 resources/uploads/admins/admin".$row->admin_id);
-            exec("sudo chmod -R 777 resources/uploads/admins/admin".$row->admin_id."/ebooks/coverpic");
-            exec("sudo chmod -R 777 resources/uploads/admins/admin".$row->admin_id."/ebooks/pdf");
+            exec("sudo chmod -R 777 resources/uploads/admins");
+            exec("sudo chmod -R 777 resources/uploads/admins/ebooks/coverpic");
+            exec("sudo chmod -R 777 resources/uploads/admins/ebooks/pdf");
         }
 
         header('Location:dashboard.php');
