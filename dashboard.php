@@ -29,6 +29,12 @@
     $ebook_array = mysqli_fetch_array($ebook_result);
     $ebook_count = $ebook_array[0];
 
+    // Getting category count
+    $query = "select count(category_id) from category inner join admin on admin.admin_id = category.admin_id where category.admin_id=".$admin;
+    $category_result = mysqli_query($con,$query);
+    $category_array = mysqli_fetch_array($category_result);
+    $category_count = $category_array[0];
+
     // Getting author count
     $query = "select count(author_id) from author inner join admin on admin.admin_id = author.admin_id where author.admin_id=".$admin;
     $author_result = mysqli_query($con,$query);
@@ -85,6 +91,16 @@
                         <div class="card-body">
                             <h1><?php echo $ebook_count?></h1>
                             <h6>Total Ebooks</h6>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm" style="padding-right: 2px;">
+                <a href="category.php" style="text-decoration: none;">
+                    <div class="card text-white bg-secondary mb-3" style="max-width: 25rem;">
+                        <div class="card-body">
+                            <h1><?php echo $category_count?></h1>
+                            <h6>Total Categories</h6>
                         </div>
                     </div>
                 </a>
