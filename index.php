@@ -1,5 +1,40 @@
 <?php 
     session_start();
+
+    include "database.php";
+?>
+
+<?php 
+
+    $row_list = array();
+
+    $query = "select*from ebook";
+    $result = mysqli_query($con,$query);
+
+    while($row = mysqli_fetch_array($result)){
+        $row_list[] = $row;
+    }
+?>
+
+<?php
+
+    $page = 1;
+
+    if(isset($_GET['page'])){
+        $page = $_GET['page'];
+    }
+
+    $result = mysqli_query($con,"select count(ebook_id) from ebook");
+    $rows_array = mysqli_fetch_array($result);
+
+    $ebook_count = $rows_array[0];
+
+    $items_per_page = 10;
+    $required_pages = ceil($ebook_count/$items_per_page); 
+
+    $start = $items_per_page*$page -$items_per_page;
+    $end = $items_per_page;
+
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +62,56 @@
             </div>
         </div>
         <br />
+        
+        <?php 
+
+            $count = (int)1;
+
+            echo '<div class="row">';
+                foreach($row_list as $row){
+            
+                    echo '<div class="col-sm-2">';
+                        echo '<div class="card" style="width:160px;height:250px">';
+                            echo '<div class="row">';
+                                echo '<div class="col" align="center">';
+                                    echo '<img class="card-img-top" src="resources/uploads/admins/ebooks/coverpic/'.$row['cover_pic'].'" height="120px" width="100px" >';
+                                echo '</div>';
+                            echo '</div>';
+                            echo '<div class="card-body">';
+                                echo '<div class="row">';
+                                    echo '<div class="col" align="center">';
+                                        echo $row['title'];
+                                    echo '</div>';
+                                echo '</div>';
+                                echo '<div class="row">';
+                                    echo '<div class="col" align="center">';
+                                        echo '<h6>';
+                                            echo $row['price'];
+                                        echo '</h6>';
+                                    echo '</div>';
+                                    echo '<div class="col" align="center">';
+                                        echo '<input class="btn btn-warning btn-sm" type="button" value="View" />';
+                                    echo '</div>';
+                                echo '</div>';
+                                echo '<div class="row">';
+                                    echo '<div class="col" align="center">';
+                                        echo '<input class="btn btn-success btn-sm" type="button" value="Add To Cart" />';
+                                    echo '</div>';
+                                echo '</div>';
+                            echo '</div>';
+                        echo '</div>';
+                    echo '</div>';
+
+                    if($count%2==(int)0){
+                        echo '</div>';
+                        echo '<div class="row">';
+                    }
+
+                    $count++;
+                }
+            echo '</div>';
+           
+        ?>
         
         <?php 
             require "components/modals/dashboard/admin-register-modal.php";
