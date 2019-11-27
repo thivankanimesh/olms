@@ -95,7 +95,11 @@
                                 echo '</div>';
                                 echo '<div class="row">';
                                     echo '<div class="col" align="center">';
-                                        echo '<input class="btn btn-success btn-sm" type="button" value="Add To Cart" />';
+                                        echo '<form action="cart-controller.php" method="POST">';
+                                            echo '<input class="btn btn-success btn-sm" name="add-to-cart" type="submit" value="Add To Cart" />';
+                                            echo '<input type="hidden" name="ebook_id" value="'.$row['ebook_id'].'" />';
+                                            echo '<input type="hidden" name="page" value="'.$page.'" />';
+                                        echo '</form>';
                                     echo '</div>';
                                 echo '</div>';
                             echo '</div>';

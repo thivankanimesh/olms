@@ -18,8 +18,14 @@
     $row = $result->fetch_object();
 
     if(password_verify($password,$row->password)){
-        $_SESSION["logged"]="$row->user_id";
-        header('Location:account.php');
+
+        $_SESSION["user-logged"]="$row->user_id";
+        
+        if(isset($_POST["user-login-modal"])){
+            header('Location:account.php');
+        }else if(isset($_POST["user-login-view"])){
+            header('Location:index.php');
+        }
 
     }else{
         header('Location:index.php');

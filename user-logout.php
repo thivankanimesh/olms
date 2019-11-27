@@ -1,12 +1,12 @@
 <?php
 
-    if(!$_SESSION["logged"]){
+    if(!$_SESSION["user-logged"]){
         header('Location:index.php');
     }
 
     session_start();
 
-    unset($_SESSION["logged"]);
+    unset($_SESSION["user-logged"]);
 
     header('Location:index.php');
 ?>
