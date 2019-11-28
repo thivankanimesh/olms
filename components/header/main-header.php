@@ -2,11 +2,11 @@
     include "database.php";
 
     if(isset($_SESSION["user-logged"])){
-        $query = "select count(cart_item_id) from cart where user_id=".$_SESSION["user-logged"];
+        $query = "select count(shoppingcart_item_id) from shoppingcart where user_id=".$_SESSION["user-logged"];
 
-        $cart_item_result = mysqli_query($con,$query);
-        $cart_item_array = mysqli_fetch_array($cart_item_result);
-        $cart_item_count = $cart_item_array[0];
+        $shoppingcart_item_result = mysqli_query($con,$query);
+        $shoppingcart_item_array = mysqli_fetch_array($shoppingcart_item_result);
+        $shoppingcart_item_count = $shoppingcart_item_array[0];
     }
 ?>
 
@@ -16,8 +16,8 @@
         <?php
         if(isset($_SESSION["user-logged"])){
                     echo '<div class="form-group">';
-                        if(isset($_SESSION["added-to-cart"])){
-                            echo '<a href="shoppingcart.php" class="btn btn-primary" style="margin-right: 5px" type="button">Shopping Cart : '.$cart_item_count.'</a>';
+                        if(isset($_SESSION["added-to-shoppingcart"])){
+                            echo '<a href="shoppingcart.php" class="btn btn-primary" style="margin-right: 5px" type="button">Shopping Cart : '.$shoppingcart_item_count.'</a>';
                         }
                         echo '<a href="account.php" class="btn btn-primary" style="margin-right: 5px" type="button">Account</a>';
                         echo '<a href="user-logout.php" class="btn btn-danger" type="button">Logout</a>';
