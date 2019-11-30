@@ -20,9 +20,17 @@
         $ebook_id = $_POST['ebook_id'];
         $user_id = $_SESSION["user-logged"];
 
-        $query = "insert into shoppingcart (ebook_id,user_id) values ($ebook_id,$user_id)";
+        $query = "select * from shoppingcart where ebook_id = $ebook_id and user_id = $user_id";
 
-        mysqli_query($con,$query);
+        $result = mysqli_query($con,$query);
+
+        if(mysqli_num_rows($result) == 0){
+
+            $query = "insert into shoppingcart (ebook_id,user_id) values ($ebook_id,$user_id)";
+
+            mysqli_query($con,$query);
+
+        }
 
         $_SESSION["added-to-shoppingcart"] = $user_id;
         
@@ -122,7 +130,16 @@
         </div>
         <div class="row justify-content-end">
             <div class="col-md-3 offset-md-3">
-                <form action="payment-controller.php" method="POST">
+                <?php 
+                    $query = "select sum(ebook.price) as total_amount from shoppingcart inner join ebook on ebook.ebook_id = shoppingcart.ebook_id";
+                    $result = mysqli_query($con, $query);
+                    echo "Total : ",mysqli_fetch_array($result)[0];
+                ?>
+            </div>
+        </div>
+        <div class="row justify-content-end">
+            <div class="col-md-3 offset-md-3">
+                <form action="payment.php" method="POST">
                     <input name="form-checkout" class="btn btn-success" type="submit" value="Checkout" />
                 </form>
             </div>
