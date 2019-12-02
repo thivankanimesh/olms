@@ -6,14 +6,50 @@
 
 <?php 
 
+    $row_list1 = array();
+
+    $query1 = "select name from category";
+
+    $result1 = mysqli_query($con,$query1);
+
+    while($row1 = mysqli_fetch_array($result1)){
+        $row_list1[] = $row1;
+    }
+
+?>
+
+<?php 
+
     $row_list = array();
 
-    $query = "select*from ebook";
-    $result = mysqli_query($con,$query);
+    if(isset($_POST['form-search'])){
 
-    while($row = mysqli_fetch_array($result)){
-        $row_list[] = $row;
+        $q = $_POST['q'];
+        $category_name = $_POST['category'];
+
+        if($category_name == "All"){
+            $query2 = "select*from ebook where title like '%$q%' ";
+        }else {
+            $query2 = "select*from ebook inner join category on category.category_id = ebook.category_id where ebook.title like '%$q%' and category.name like '$category_name'";
+        }
+
+        $result2 = mysqli_query($con,$query2);
+
+        while($row = mysqli_fetch_array($result2)){
+            $row_list[] = $row;
+        }
+
+    }else {
+
+        $query = "select*from ebook";
+        $result = mysqli_query($con,$query);
+
+        while($row = mysqli_fetch_array($result)){
+            $row_list[] = $row;
+        }
+
     }
+
 ?>
 
 <?php
@@ -63,6 +99,25 @@
         </div>
         <br />
         
+        <div class="row">
+            <div class="col">
+                <form action="index.php" method="POST">
+                    Search :
+                    <input name="q" type="text" />
+                    <select name="category">
+                        <?php 
+                            echo '<option value="All" selected>All</option>';
+                            foreach($row_list1 as $row1){
+                                echo '<option value="'.$row1['name'].'">'.$row1['name'].'</option>';
+                            }
+                        ?>
+                    </select>
+                    <input type="submit" name="form-search" value="Search" />
+                </form>
+            </div>
+        </div>
+        <br />
+
         <?php 
 
             $count = (int)1;
