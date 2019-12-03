@@ -17,21 +17,21 @@
         if(isset($_SESSION["user-logged"])){
                     echo '<div class="form-group">';
                         if(isset($_SESSION["added-to-shoppingcart"])){
-                            echo '<a href="shoppingcart.php" class="btn btn-primary" style="margin-right: 5px" type="button">Shopping Cart : '.$shoppingcart_item_count.'</a>';
+                            echo '<a href="shoppingcart.php" class="btn btn-sm btn-primary" style="margin-right: 5px" type="button">Shopping Cart : '.$shoppingcart_item_count.'</a>';
                         }
-                        echo '<a href="account.php" class="btn btn-primary" style="margin-right: 5px" type="button">Account</a>';
-                        echo '<a href="user-logout.php" class="btn btn-danger" type="button">Logout</a>';
+                        echo '<a href="account.php" class="btn btn-sm btn-primary" style="margin-right: 5px" type="button">Account</a>';
+                        echo '<a href="user-logout.php" class="btn btn-sm btn-danger" type="button">Logout</a>';
                     echo '</div>';
         }else if(isset($_SESSION["admin-logged"])){
                     echo '<div class="form-group">';
-                        echo '<a href="dashboard.php" class="btn btn-primary" style="margin-right: 5px" type="button">Admin Dashboard</a>';
-                        echo '<a href="admin-logout.php" class="btn btn-danger" type="button">Admin Logout</a>';
+                        echo '<a href="dashboard.php" class="btn btn-sm btn-primary" style="margin-right: 5px" type="button">Admin Dashboard</a>';
+                        echo '<a href="admin-logout.php" class="btn btn-sm btn-danger" type="button">Admin Logout</a>';
                     echo '</div>';
         }else{
-                echo '<button type="button" class="btn btn-danger" style="margin-right: 5px" data-toggle="modal" data-target="#admin-register-modal">Admin Register</button>';
-                echo '<button type="button" class="btn btn-danger" style="margin-right: 5px" data-toggle="modal" data-target="#admin-login-modal">Admin Login</button>';
-                echo '<button type="button" class="btn btn-danger" style="margin-right: 5px" data-toggle="modal" data-target="#user-register-modal">Register</button>';
-                echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#user-login-modal">Login</button>';
+                echo '<button type="button" class="btn btn-sm btn-danger" style="margin-right: 5px" data-toggle="modal" data-target="#admin-register-modal">Admin Register</button>';
+                echo '<button type="button" class="btn btn-sm btn-danger" style="margin-right: 5px" data-toggle="modal" data-target="#admin-login-modal">Admin Login</button>';
+                echo '<button type="button" class="btn btn-sm btn-danger" style="margin-right: 5px" data-toggle="modal" data-target="#user-register-modal">Register</button>';
+                echo '<button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#user-login-modal">Login</button>';
             }
         ?>
     </form>

@@ -28,7 +28,7 @@
 
         while($row = mysqli_fetch_array($result1)){
             
-            $query2 = "insert into purchasing_records (ebook_id,date,sold_price,user_id) values (".$row['ebook_id'].",".$date.",".$row['ebook_price'].",".$row['user_id'].")";
+            $query2 = "insert into purchasing_records (ebook_id,date,sold_price,user_id) values (".$row['ebook_id'].",'".$date."',".$row['ebook_price'].",".$row['user_id'].")";
 
             mysqli_query($con,$query2);
 
