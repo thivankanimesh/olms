@@ -1,10 +1,10 @@
 <?php 
     session_start();
 
-    $admin;
+    $admin_id;
 
     if(isset($_SESSION["admin-logged"])){
-        $admin = $_SESSION["admin-logged"];
+        $admin_id = $_SESSION["admin-logged"];
     }else{
         header('Location:index.php');
     }
@@ -24,28 +24,60 @@
     $user_count = $user_array[0];
 
     // Getting ebook count
-    $query = "select count(ebook_id) from ebook inner join admin on admin.admin_id = ebook.admin_id where ebook.admin_id=".$admin;
+    $query = "select count(ebook_id) from ebook inner join admin on admin.admin_id = ebook.admin_id where ebook.admin_id=".$admin_id;
     $ebook_result = mysqli_query($con,$query);
     $ebook_array = mysqli_fetch_array($ebook_result);
     $ebook_count = $ebook_array[0];
 
     // Getting category count
-    $query = "select count(category_id) from category inner join admin on admin.admin_id = category.admin_id where category.admin_id=".$admin;
+    $query = "select count(category_id) from category inner join admin on admin.admin_id = category.admin_id where category.admin_id=".$admin_id;
     $category_result = mysqli_query($con,$query);
     $category_array = mysqli_fetch_array($category_result);
     $category_count = $category_array[0];
 
     // Getting author count
-    $query = "select count(author_id) from author inner join admin on admin.admin_id = author.admin_id where author.admin_id=".$admin;
+    $query = "select count(author_id) from author inner join admin on admin.admin_id = author.admin_id where author.admin_id=".$admin_id;
     $author_result = mysqli_query($con,$query);
     $author_array = mysqli_fetch_array($author_result);
     $author_count = $author_array[0];
 
     // Getting publisher count
-    $query = "select count(publisher_id) from publisher inner join admin on admin.admin_id = publisher.admin_id where publisher.admin_id=".$admin;
+    $query = "select count(publisher_id) from publisher inner join admin on admin.admin_id = publisher.admin_id where publisher.admin_id=".$admin_id;
     $publisher_result = mysqli_query($con,$query);
     $publisher_array = mysqli_fetch_array($publisher_result);
     $publisher_count = $publisher_array[0];
+
+?>
+
+<?php 
+
+    $year = date("Y");
+    $month = date("m");
+    $date = date("d");
+
+    // Geting this year sales count
+    $query6 = "select count(purchasing_record_id) from purchasing_records inner join ebook on ebook.ebook_id = purchasing_records.ebook_id where date like '$year/%' and ebook.admin_id=$admin_id";
+    $result6 = mysqli_query($con,$query6);
+    $array6 = mysqli_fetch_array($result6);
+    $this_year_sales_count = $array6[0];
+
+    // Geting this month sales count
+    $query7 = "select count(purchasing_record_id) from purchasing_records inner join ebook on ebook.ebook_id = purchasing_records.ebook_id where date like '$year/$month/%' and ebook.admin_id=$admin_id";
+    $result7 = mysqli_query($con,$query7);
+    $array7 = mysqli_fetch_array($result7);
+    $this_month_sales_count = $array7[0];
+
+    // Geting today sales count
+    $query8 = "select count(purchasing_record_id) from purchasing_records inner join ebook on ebook.ebook_id = purchasing_records.ebook_id where date like '$year/$month/$date' and ebook.admin_id=$admin_id";
+    $result8 = mysqli_query($con,$query8);
+    $array8 = mysqli_fetch_array($result8);
+    $today_sales_count = $array8[0];
+
+    // Total Sales
+    $query9 = "select count(purchasing_record_id) from purchasing_records inner join ebook on ebook.ebook_id = purchasing_records.ebook_id where ebook.admin_id=$admin_id";
+    $result9 = mysqli_query($con,$query9);
+    $array9 = mysqli_fetch_array($result9);
+    $total_sales_count = $array9[0];
 
 ?>
 
@@ -97,7 +129,7 @@
             </div>
             <div class="col-sm" style="padding-right: 2px;">
                 <a href="category.php" style="text-decoration: none;">
-                    <div class="card text-white bg-secondary mb-3" style="max-width: 25rem;">
+                    <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
                         <div class="card-body">
                             <h1><?php echo $category_count?></h1>
                             <h6>Total Categories</h6>
@@ -117,13 +149,85 @@
             </div>
             <div class="col-sm" style="padding-right: 2px;">
                 <a href="publisher.php" style="text-decoration: none;">
-                    <div class="card text-white bg-success mb-3" style="max-width: 25rem;">
+                    <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
                         <div class="card-body">
                             <h1><?php echo $publisher_count?></h1>
                             <h6>Total Publishers</h6>
                         </div>
                     </div>
                 </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm" style="padding-right: 2px;">
+                <div class="card card text-white bg-info mb-3" style="max-width: 25rem;">
+                    <div class="card-body">
+                        <h1 id="this_year_sales_count"><?php echo $this_year_sales_count?></h1>
+                        <h6>This Year Sales</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm" style="padding-right: 2px;">
+                <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
+                    <div class="card-body">
+                        <h1 id="this_month_sales_count"><?php echo $this_month_sales_count?></h1>
+                        <h6>This Month Sales</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm" style="padding-right: 2px;">
+                <div class="card text-white bg-success mb-3" style="max-width: 25rem;">
+                    <div class="card-body">
+                        <h1 id="today_sales_count"><?php echo $today_sales_count?></h1>
+                        <h6>Today Sales</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm" style="padding-right: 2px;">
+                <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
+                    <div class="card-body">
+                        <h1 id="total_sales_count"><?php echo $total_sales_count?></h1>
+                        <h6>Total Sales</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                <script type="text/javascript">
+
+                    google.charts.load("current", {packages:['corechart']});
+                    google.charts.setOnLoadCallback(drawChart);
+                    function drawChart() {
+                    var data = google.visualization.arrayToDataTable([
+                        ["Element", "Sales", { role: "style" } ],
+                        ["This Year", Number(document.getElementById("this_month_sales_count").innerHTML), "#b87333"],
+                        ["This Month", Number(document.getElementById("this_month_sales_count").innerHTML), "silver"],
+                        ["Today", Number(document.getElementById("today_sales_count").innerHTML), "gold"],
+                        ["Total", Number(document.getElementById("total_sales_count").innerHTML), "color: #e5e4e2"]
+                    ]);
+
+                    var view = new google.visualization.DataView(data);
+                    view.setColumns([0, 1,
+                                    { calc: "stringify",
+                                        sourceColumn: 1,
+                                        type: "string",
+                                        role: "annotation" },
+                                    2]);
+
+                    var options = {
+                        title: "Sales Report",
+                        width: 600,
+                        height: 400,
+                        bar: {groupWidth: "95%"},
+                        legend: { position: "none" },
+                    };
+                    var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+                    chart.draw(view, options);
+                }
+                </script>
+                <div id="columnchart_values" style="width: 900px; height: 300px;"></div>
             </div>
         </div>
     </div>
