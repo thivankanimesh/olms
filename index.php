@@ -126,32 +126,32 @@
                 foreach($row_list as $row){
             
                     echo '<div class="col-sm-2">';
-                        echo '<div class="card" style="width:160px;height:250px">';
+                        echo '<div class="card" style="width:150px;height:280px">';
                             echo '<div class="row">';
                                 echo '<div class="col" align="center">';
-                                    echo '<img class="card-img-top" src="resources/uploads/admins/ebooks/coverpic/'.$row['cover_pic'].'" height="120px" width="100px" >';
+                                    echo '<img class="card-img-top" src="resources/uploads/admins/ebooks/coverpic/'.$row['cover_pic'].'" height="120px" width="90px" >';
                                 echo '</div>';
                             echo '</div>';
                             echo '<div class="card-body">';
                                 echo '<div class="row">';
                                     echo '<div class="col" align="center">';
-                                        echo $row['title'];
+                                        echo '<h5>'.$row['title'].'</h5>';
                                     echo '</div>';
                                 echo '</div>';
                                 echo '<div class="row">';
                                     echo '<div class="col" align="center">';
                                         echo '<h6>';
-                                            echo $row['price'];
+                                            echo 'Rs:'.$row['price'];
                                         echo '</h6>';
                                     echo '</div>';
-                                    echo '<div class="col" align="center">';
-                                        echo '<input class="btn btn-warning btn-sm" type="button" value="View" />';
+                                    echo '<div class="col" align="center" style="padding-bottom:2px">';
+                                        echo '<input class="btn btn-warning btn-sm btn-block" type="button" value="View" />';
                                     echo '</div>';
                                 echo '</div>';
                                 echo '<div class="row">';
                                     echo '<div class="col" align="center">';
                                         echo '<form action="shoppingcart.php" method="POST">';
-                                            echo '<input class="btn btn-success btn-sm" name="form-add--shoppingcart-item" type="submit" value="Add To Cart" />';
+                                            echo '<input class="btn btn-success btn-sm btn-block" name="form-add--shoppingcart-item" type="submit" value="Add To Cart" />';
                                             echo '<input type="hidden" name="ebook_id" value="'.$row['ebook_id'].'" />';
                                             echo '<input type="hidden" name="page" value="'.$page.'" />';
                                         echo '</form>';
@@ -179,6 +179,7 @@
             require "components/modals/dashboard/user-login-modal.php";
         ?>
     </div> 
+    <br />
     <footer style="background-color: blue; height: 100px; width: 100%;">
             <div class="container">
                 <br />
