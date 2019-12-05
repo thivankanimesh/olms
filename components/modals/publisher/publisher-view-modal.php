@@ -6,7 +6,24 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
             </div>
             <div class="modal-body">
-                    
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Name :</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><?php echo $row['fname'],' ',$row['lname']?></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Email :</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><?php echo $row['email']?></p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                     <input class="btn btn-secondary" type="button" value="Close" data-dismiss="modal"/>
