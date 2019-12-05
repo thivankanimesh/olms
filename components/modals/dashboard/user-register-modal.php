@@ -10,11 +10,11 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label class="col-form-label" for="fname">First Name</label>
-                            <input class="form-control" name="fname" type="text" placeholder="Enter First Name" required/>
+                            <input class="form-control" name="fname" type="text" placeholder="Enter First Name" minlength="3" maxlength="10" pattern="^[a-zA-Z]+$" title="First name must be 3 or more letters & need to be letters only" required/>
                         </div>
                         <div class="form-group col-md-6">
                             <label class="col-form-label" for="lname">Last Name</label>
-                            <input class="form-control" name="lname" type="text" placeholder="Enter Last Name" required/>
+                            <input class="form-control" name="lname" type="text" placeholder="Enter Last Name" minlength="3" maxlength="10" pattern="^[a-zA-Z]+$" title="Last name must be 3 or more letters & need to be letters only" required/>
                         </div>
                     </div>
 
@@ -55,12 +55,12 @@
 
                     <div class="form-group">
                         <label class="col-form-label" for="phone">Enter Mobile Number</label>
-                        <input class="form-control" name="mobile" type="tel" placeholder="Enter Mobile Number" required/>
+                        <input class="form-control" name="mobile" type="tel" placeholder="Enter Mobile Number" pattern="^[=+\s]*(?:[0-9][=+\s]*){10,}$" title="Mobile number only" required/>
                     </div>
 
                     <div class="form-group">
                         <label class="col-form-label" for="propic">Upload Profile Picture</label>
-                        <input class="form-control" name="propic" type="file" required>
+                        <input class="form-control" name="propic" type="file" accept="image/x-png,image/gif,image/jpeg" required>
                     </div>   
             </div>
             <div class="modal-footer">

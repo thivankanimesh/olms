@@ -10,11 +10,11 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label class="col-form-label" for="fname">First Name</label>
-                            <input class="form-control" name="fname" type="text" placeholder="Enter First Name" required/>
+                            <input class="form-control" name="fname" type="text" placeholder="Enter First Name" placeholder="Enter First Name" minlength="3" maxlength="10" pattern="^[a-zA-Z]+$" title="First name must be 3 or more letters & need to be letters only" required/>
                         </div>
                         <div class="form-group col-md-6">
                             <label class="col-form-label" for="lname">Last Name</label>
-                            <input class="form-control" name="lname" type="text" placeholder="Enter Last Name" required/>
+                            <input class="form-control" name="lname" type="text" placeholder="Enter Last Name" placeholder="Enter First Name" minlength="3" maxlength="10" pattern="^[a-zA-Z]+$" title="Last name must be 3 or more letters & need to be letters only" required/>
                         </div>
                     </div>
                     
