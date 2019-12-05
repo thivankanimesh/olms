@@ -160,36 +160,44 @@
         </div>
         <div class="row">
             <div class="col-sm" style="padding-right: 2px;">
-                <div class="card card text-white bg-info mb-3" style="max-width: 25rem;">
-                    <div class="card-body">
-                        <h1 id="this_year_sales_count"><?php echo $this_year_sales_count?></h1>
-                        <h6>This Year Sales</h6>
+                <a href="sales.php?from=from-this-year-sales" style="text-decoration: none;">
+                    <div class="card card text-white bg-info mb-3" style="max-width: 25rem;">
+                        <div class="card-body">
+                            <h1 id="this_year_sales_count"><?php echo $this_year_sales_count?></h1>
+                            <h6>This Year Sales</h6>
+                        </div>
                     </div>
-                </div>
+                </a>a>
             </div>
             <div class="col-sm" style="padding-right: 2px;">
-                <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
-                    <div class="card-body">
-                        <h1 id="this_month_sales_count"><?php echo $this_month_sales_count?></h1>
-                        <h6>This Month Sales</h6>
+                <a href="sales.php?from=from-this-month-sales" style="text-decoration: none;">
+                    <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
+                        <div class="card-body">
+                            <h1 id="this_month_sales_count"><?php echo $this_month_sales_count?></h1>
+                            <h6>This Month Sales</h6>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-sm" style="padding-right: 2px;">
-                <div class="card text-white bg-success mb-3" style="max-width: 25rem;">
-                    <div class="card-body">
-                        <h1 id="today_sales_count"><?php echo $today_sales_count?></h1>
-                        <h6>Today Sales</h6>
+                <a href="sales.php?from=from-today-sales" style="text-decoration: none;">
+                    <div class="card text-white bg-success mb-3" style="max-width: 25rem;">
+                        <div class="card-body">
+                            <h1 id="today_sales_count"><?php echo $today_sales_count?></h1>
+                            <h6>Today Sales</h6>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-sm" style="padding-right: 2px;">
-                <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
-                    <div class="card-body">
-                        <h1 id="total_sales_count"><?php echo $total_sales_count?></h1>
-                        <h6>Total Sales</h6>
+                <a href="sales.php?from=from-total-sales" style="text-decoration: none;">
+                    <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
+                        <div class="card-body">
+                            <h1 id="total_sales_count"><?php echo $total_sales_count?></h1>
+                            <h6>Total Sales</h6>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
         <div class="row">
