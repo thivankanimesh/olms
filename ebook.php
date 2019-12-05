@@ -267,7 +267,7 @@
                     <ul class="pagination"> 
                         <?php
                             for($i=1;$i<=$required_pages;$i++){
-                                echo '<li class="page-item"><a class="page-link" href="user.php?page='.$i.'">'.$i.'</a></li>';
+                                echo '<li class="page-item"><a class="page-link" href="ebook.php?page='.$i.'">'.$i.'</a></li>';
                             }
                         ?>
                     </ul>
