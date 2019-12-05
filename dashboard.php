@@ -109,7 +109,7 @@
         <div class="row" style="padding-top: 10px">
             <div class="col-sm" style="padding-right: 2px;">
                 <a href="user.php" style="text-decoration: none">
-                    <div class="card text-white bg-dark mb-3" style="max-width: 25rem">
+                    <div class="card text-white bg-info mb-3" style="max-width: 25rem">
                         <div class="card-body">
                             <h1><?php echo $user_count?></h1>
                             <h6>Total Users</h6>
@@ -129,7 +129,7 @@
             </div>
             <div class="col-sm" style="padding-right: 2px;">
                 <a href="category.php" style="text-decoration: none;">
-                    <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
+                    <div class="card text-white bg-warning mb-3" style="max-width: 25rem;">
                         <div class="card-body">
                             <h1><?php echo $category_count?></h1>
                             <h6>Total Categories</h6>
@@ -149,7 +149,7 @@
             </div>
             <div class="col-sm" style="padding-right: 2px;">
                 <a href="publisher.php" style="text-decoration: none;">
-                    <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
+                    <div class="card text-white bg-success mb-3" style="max-width: 25rem;">
                         <div class="card-body">
                             <h1><?php echo $publisher_count?></h1>
                             <h6>Total Publishers</h6>
@@ -161,19 +161,19 @@
         <div class="row">
             <div class="col-sm" style="padding-right: 2px;">
                 <a href="sales.php?from=from-this-year-sales" style="text-decoration: none;">
-                    <div class="card card text-white bg-info mb-3" style="max-width: 25rem;">
+                    <div class="card card text-white bg-dark mb-3" style="max-width: 25rem;">
                         <div class="card-body">
-                            <h1 id="this_year_sales_count"><?php echo $this_year_sales_count?></h1>
+                            <h3 id="this_year_sales_count"><?php echo $this_year_sales_count?></h3>
                             <h6>This Year Sales</h6>
                         </div>
                     </div>
-                </a>a>
+                </a>
             </div>
             <div class="col-sm" style="padding-right: 2px;">
                 <a href="sales.php?from=from-this-month-sales" style="text-decoration: none;">
                     <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
                         <div class="card-body">
-                            <h1 id="this_month_sales_count"><?php echo $this_month_sales_count?></h1>
+                            <h3 id="this_month_sales_count"><?php echo $this_month_sales_count?></h3>
                             <h6>This Month Sales</h6>
                         </div>
                     </div>
@@ -181,9 +181,9 @@
             </div>
             <div class="col-sm" style="padding-right: 2px;">
                 <a href="sales.php?from=from-today-sales" style="text-decoration: none;">
-                    <div class="card text-white bg-success mb-3" style="max-width: 25rem;">
+                    <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
                         <div class="card-body">
-                            <h1 id="today_sales_count"><?php echo $today_sales_count?></h1>
+                            <h3 id="today_sales_count"><?php echo $today_sales_count?></h3>
                             <h6>Today Sales</h6>
                         </div>
                     </div>
@@ -193,7 +193,7 @@
                 <a href="sales.php?from=from-total-sales" style="text-decoration: none;">
                     <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
                         <div class="card-body">
-                            <h1 id="total_sales_count"><?php echo $total_sales_count?></h1>
+                            <h3 id="total_sales_count"><?php echo $total_sales_count?></h3>
                             <h6>Total Sales</h6>
                         </div>
                     </div>
@@ -211,9 +211,9 @@
                     var data = google.visualization.arrayToDataTable([
                         ["Element", "Sales", { role: "style" } ],
                         ["This Year", Number(document.getElementById("this_month_sales_count").innerHTML), "#b87333"],
-                        ["This Month", Number(document.getElementById("this_month_sales_count").innerHTML), "silver"],
-                        ["Today", Number(document.getElementById("today_sales_count").innerHTML), "gold"],
-                        ["Total", Number(document.getElementById("total_sales_count").innerHTML), "color: #e5e4e2"]
+                        ["This Month", Number(document.getElementById("this_month_sales_count").innerHTML), "#b87333"],
+                        ["Today", Number(document.getElementById("today_sales_count").innerHTML), "#b87333"],
+                        ["Total", Number(document.getElementById("total_sales_count").innerHTML), "color: #b87333"]
                     ]);
 
                     var view = new google.visualization.DataView(data);
