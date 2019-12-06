@@ -10,11 +10,11 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label class="col-form-label" for="fname">First Name</label>
-                            <input class="form-control" name="fname" type="text" value="<?php echo $row['fname'] ?>" placeholder="Enter First Name"  minlength="3" maxlength="10" pattern="^[a-zA-Z]+$" title="First name must be 3 or more letters & need to be letters only" required/>
+                            <input class="form-control" name="fname" type="text" value="<?php echo $row['fname'] ?>" placeholder="Enter First Name"  minlength="3" maxlength="50" pattern="^[a-zA-Z]+$" title="First name must be 3 or more letters & need to be letters only" required/>
                         </div>
                         <div class="form-group col-md-6">
                             <label class="col-form-label" for="lname">Last Name</label>
-                            <input class="form-control" name="lname" type="text" value="<?php echo $row['lname'] ?>" placeholder="Enter Last Name"  minlength="3" maxlength="10" pattern="^[a-zA-Z]+$" title="First name must be 3 or more letters & need to be letters only" required/>
+                            <input class="form-control" name="lname" type="text" value="<?php echo $row['lname'] ?>" placeholder="Enter Last Name"  minlength="3" maxlength="50" pattern="^[a-zA-Z]+$" title="First name must be 3 or more letters & need to be letters only" required/>
                         </div>
                     </div>
                     
