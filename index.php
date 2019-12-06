@@ -16,6 +16,26 @@
         $row_list1[] = $row1;
     }
 
+    $row_list2 = array();
+
+    $query3 = "select fname, lname from author";
+
+    $result3 = mysqli_query($con,$query3);
+
+    while($row2 = mysqli_fetch_array($result3)){
+        $row_list2[] = $row2;
+    }
+
+    $row_list3 = array();
+
+    $query4 = "select fname, lname from publisher";
+
+    $result4 = mysqli_query($con,$query4);
+
+    while($row3 = mysqli_fetch_array($result4)){
+        $row_list3[] = $row3;
+    }
+
 ?>
 
 <?php 
@@ -26,11 +46,31 @@
 
         $q = $_POST['q'];
         $category_name = $_POST['category'];
+        $author_name = $_POST['author'];
+        $publisher_name = $_POST['publisher'];
 
-        if($category_name == "All"){
+        $author_name_array = array();
+        $publisher_name_array = array();
+
+        $author_name_array[] = explode(" ",$author_name,2);
+        $publisher_name_array[] = explode(" ",$publisher_name,2);
+
+        if($category_name == "-Select Category-" && $author_name == "-Select Author-" && $publisher_name == "-Select Publisher-"){
             $query2 = "select*from ebook where title like '%$q%' ";
+        }else if($author_name == "-Select Author-" && $publisher_name == "-Select Publisher-") {
+            $query2 = "select*from ebook inner join category on category.category_id = ebook.category_id where ebook.title like '%$q%' and category.name = '$category_name'";
+        }else if($category_name == "-Select Category-" && $publisher_name == "-Select Publisher-"){
+            $query2 = "select*from ebook inner join author on author.author_id = ebook.author_id where ebook.title like '%$q%' and (author.fname = '".$author_name_array[0][0]."' or author.lname = '".$author_name_array[0][1]."')";
+        }else if($category_name == "-Select Category-" && $author_name == "-Select Author-"){
+            $query2 = "select*from ebook inner join publisher on publisher.publisher_id = ebook.publisher_id where ebook.title like '%$q%' and (publisher.fname = '".$publisher_name_array[0][0]."' or publisher.lname = '".$publisher_name_array[0][1]."')";
+        }else if($publisher_name == "-Select Publisher-"){
+            $query2 = "select*from ebook inner join category on category.category_id = ebook.category_id inner join author on author.author_id = ebook.author_id where ebook.title like '%$q%' and category.name = '$category_name' and (author.fname = '".$author_name_array[0][0]."' or author.lname = '".$author_name_array[0][1]."')";
+        }else if($author_name == "-Select Author-"){
+            $query2 = "select*from ebook inner join category on category.category_id = ebook.category_id inner join publisher on publisher.publisher_id = ebook.publisher_id where ebook.title like '%$q%' and category.name = '$category_name' and (publisher.fname = '".$publisher_name_array[0][0]."' or publisher.lname = '".$publisher_name_array[0][1]."')";
+        }else if($category_name == "-Select Category-"){
+            $query2 = "select*from ebook inner join author on author.author_id = ebook.author_id inner join publisher on publisher.publisher_id = ebook.publisher_id where ebook.title like '%$q%' and (author.fname = '".$author_name_array[0][0]."' or author.lname = '".$author_name_array[0][1]."') and (publisher.fname = '".$publisher_name_array[0][0]."' or publisher.lname = '".$publisher_name_array[0][1]."')";
         }else {
-            $query2 = "select*from ebook inner join category on category.category_id = ebook.category_id where ebook.title like '%$q%' and category.name like '$category_name'";
+            $query2 = "select*from ebook inner join category on category.category_id = ebook.category_id inner join author on author.author_id = ebook.author_id inner join publisher on publisher.publisher_id = ebook.publisher_id where ebook.title like '%$q%' and category.name = '$category_name' and (author.fname = '".$author_name_array[0][0]."' or author.lname = '".$author_name_array[0][1]."') and (publisher.fname = '".$publisher_name_array[0][0]."' or publisher.lname = '".$publisher_name_array[0][1]."')";
         }
 
         $result2 = mysqli_query($con,$query2);
@@ -100,19 +140,49 @@
         <br />
         
         <div class="row">
-            <div class="col">
+            <div class="col-12 text-center">
                 <form action="index.php" method="POST">
-                    Search :
-                    <input name="q" type="text" />
-                    <select name="category">
-                        <?php 
-                            echo '<option value="All" selected>All</option>';
-                            foreach($row_list1 as $row1){
-                                echo '<option value="'.$row1['name'].'">'.$row1['name'].'</option>';
-                            }
-                        ?>
-                    </select>
-                    <input type="submit" name="form-search" value="Search" />
+                    <div class="row">
+                        <div class="col-sm-auto">
+                            <p>Search :</p>
+                        </div>
+                        <div class="col-sm-auto">
+                            <input name="q" type="text" placeholder="Search here..." />
+                        </div>
+                        <div class="col-sm-auto">
+                            <select class="btn btn-sm btn-light" name="category">
+                                <?php 
+                                    echo '<option value="-Select Category-" selected>-Select Category-</option>';
+                                    foreach($row_list1 as $row1){
+                                        echo '<option value="'.$row1['name'].'">'.$row1['name'].'</option>';
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="col-sm-auto">
+                            <select class="btn btn-sm btn-light" name="author">
+                                <?php 
+                                    echo '<option value="-Select Author-" select>-Select Author-</option>';
+                                    foreach($row_list2 as $row2){
+                                        echo '<option value="'.$row2['fname'].' '.$row2['lname'].'">'.$row2['fname'].' '.$row2['lname'].'</option>';
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="col-sm-auto">
+                            <select class="btn btn-sm btn-light" name="publisher">
+                                <?php 
+                                    echo '<option value="-Select Publisher-" select>-Select Publisher-</option>';
+                                    foreach($row_list3 as $row3){
+                                        echo '<option value="'.$row3['fname'].' '.$row3['lname'].'">'.$row3['fname'].' '.$row3['lname'].'</option>';
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="col-sm-auto">
+                            <input class="btn btn-sm btn-dark" type="submit" name="form-search" value="Search" />
+                        </div>
+                    </div>   
                 </form>
             </div>
         </div>
