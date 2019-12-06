@@ -81,7 +81,7 @@
 
     }else {
 
-        $query = "select*from ebook";
+        $query = "select ebook.* , category.name as category_name, author.fname as author_fname, author.lname as author_lname, publisher.fname as publisher_fname, publisher.lname as publisher_lname from ebook inner join category on category.category_id = ebook.category_id inner join author on author.author_id = ebook.author_id inner join publisher on publisher.publisher_id = ebook.publisher_id";
         $result = mysqli_query($con,$query);
 
         while($row = mysqli_fetch_array($result)){
@@ -215,7 +215,8 @@
                                         echo '</h6>';
                                     echo '</div>';
                                     echo '<div class="col" align="center" style="padding-bottom:2px">';
-                                        echo '<input class="btn btn-warning btn-sm btn-block" type="button" value="View" />';
+                                        echo '<button class="btn btn-warning btn-sm btn-block" type="button" data-toggle="modal" data-target="#item-view-modal'.$row['ebook_id'].'">View</button>';
+                                        require "components/modals/index/item-view-modal.php";
                                     echo '</div>';
                                 echo '</div>';
                                 echo '<div class="row">';
