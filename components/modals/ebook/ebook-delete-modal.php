@@ -1,5 +1,5 @@
-<div class="modal fade bd-example-modal-lg" id="ebook-delete-modal<?php echo $row["ebook_id"]?>" tabindex="-1" role="dialog" aria-labelledby="ebook-delete-modal-label" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+<div class="modal fade bd-example-modal-md" id="ebook-delete-modal<?php echo $row["ebook_id"]?>" tabindex="-1" role="dialog" aria-labelledby="ebook-delete-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="ebook-delete-modal-label">Delete Author</h5>
