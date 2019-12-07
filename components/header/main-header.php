@@ -11,7 +11,7 @@
 ?>
 
 <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="index.php">Online Libary System</a>
+    <a class="navbar-brand" href="index.php">Online Library System</a>
     <form class="form-inline">
         <?php
         if(isset($_SESSION["user-logged"])){

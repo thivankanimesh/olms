@@ -92,6 +92,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 </head>
 <body background="resources/img/background.jpg" style="background-size: 100%;">
@@ -200,13 +201,20 @@
                 </a>
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
 
+                <?php 
+
+                    $offset_date = date("Y-m-d",strtotime(date('Y-m-d').' -7 days')); 
+
+                    $query10 = "select purchasing_records.ebook_id as purchasing_records_ebook_id from purchasing_records where purchasing_records.date like '' and purchasing_records.admin_id=$admin_id";
+                ?>
+
+                <script type="text/javascript">
                     google.charts.load("current", {packages:['corechart']});
                     google.charts.setOnLoadCallback(drawChart);
+                    
                     function drawChart() {
                     var data = google.visualization.arrayToDataTable([
                         ["Element", "Sales", { role: "style" } ],
@@ -226,8 +234,6 @@
 
                     var options = {
                         title: "Sales Report",
-                        width: 600,
-                        height: 400,
                         bar: {groupWidth: "95%"},
                         legend: { position: "none" },
                     };
@@ -235,7 +241,60 @@
                     chart.draw(view, options);
                 }
                 </script>
-                <div id="columnchart_values" style="width: 900px; height: 300px;"></div>
+                <div id="columnchart_values" style="width: 100%; height: 350px;"></div>
+            </div>
+            <div class="col-md-6">
+                <script>
+                    google.charts.load('current', {'packages':['corechart']});
+                    google.charts.setOnLoadCallback(drawChart);
+
+                    function drawChart() {
+
+                        var data = new google.visualization.DataTable();
+                        data.addColumn('date', 'Day');
+                        data.addColumn('number', 'Sales');
+
+                        datasetObj = [
+                            [new Date(2015, 1, 1), 5],  [new Date(2015, 1, 2), 7],  [new Date(2015, 1, 3), 3],
+                            [new Date(2015, 1, 4), 1],  [new Date(2015, 1, 5), 3],  [new Date(2015, 1, 6), 4]
+                        ];
+
+                        datasetObj.push([new Date(2015, 1, 7), 3]);
+
+                        data.addRows(datasetObj);
+
+
+                        var options = {
+                        title: 'Last 7 day sales',
+                        hAxis: {
+                            format: 'yy/M/d',
+                            gridlines: {count: 15}
+                        },
+                        vAxis: {
+                            gridlines: {color: 'none'},
+                            minValue: 0
+                        }
+                        };
+
+                        var chart = new google.visualization.LineChart(document.getElementById('chart_div2'));
+
+                        chart.draw(data, options);
+
+                        var button = document.getElementById('change');
+
+                        button.onclick = function () {
+
+                        // If the format option matches, change it to the new option,
+                        // if not, reset it to the original format.
+                        options.hAxis.format === 'yy/M/d' ?
+                        options.hAxis.format = 'MMM dd, yyyy' :
+                        options.hAxis.format = 'yy/M/d';
+
+                        chart.draw(data, options);
+                        };
+                    }
+                </script>
+                <div id="chart_div2" style="width: 100%; height: 350px;"></div>
             </div>
         </div>
     </div>
