@@ -161,44 +161,48 @@
         </div>
         <div class="row">
             <div class="col-sm" style="padding-right: 2px;">
-                <a href="sales.php?from=from-this-year-sales" style="text-decoration: none;">
+                <form action="sales.php" method="POST">
                     <div class="card card text-white bg-dark mb-3" style="max-width: 25rem;">
-                        <div class="card-body">
+                        <button name="from-form-dashboard" type="submit" class="btn btn-dark" style="max-width: 25rem;">
                             <h3 id="this_year_sales_count"><?php echo $this_year_sales_count?></h3>
-                            <h6>This Year Sales</h6>
-                        </div>
+                            <h6>Yearly Sales</h6>
+                        </button>
                     </div>
-                </a>
+                    <input type="hidden" name="from" value="form-this-year-sales" />
+                </form>
             </div>
             <div class="col-sm" style="padding-right: 2px;">
-                <a href="sales.php?from=from-this-month-sales" style="text-decoration: none;">
-                    <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
-                        <div class="card-body">
+                <form action="sales.php" method="POST">
+                    <div class="card card text-white bg-dark mb-3" style="max-width: 25rem;">
+                        <button name="from-form-dashboard" type="submit" class="btn btn-dark" style="max-width: 25rem;">
                             <h3 id="this_month_sales_count"><?php echo $this_month_sales_count?></h3>
-                            <h6>This Month Sales</h6>
-                        </div>
+                            <h6>Monthly Sales</h6>
+                        </button>
                     </div>
-                </a>
+                    <input type="hidden" name="from" value="form-this-month-sales" />
+                </form>
             </div>
             <div class="col-sm" style="padding-right: 2px;">
-                <a href="sales.php?from=from-today-sales" style="text-decoration: none;">
-                    <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
-                        <div class="card-body">
+                <form action="sales.php" method="POST">
+                    <div class="card card text-white bg-dark mb-3" style="max-width: 25rem;">
+                        <button name="from-form-dashboard" type="submit" class="btn btn-dark" style="max-width: 25rem;">
                             <h3 id="today_sales_count"><?php echo $today_sales_count?></h3>
                             <h6>Today Sales</h6>
-                        </div>
+                        </button>
                     </div>
-                </a>
+                    <input type="hidden" name="from" value="form-today-sales" />
+                </form>
             </div>
             <div class="col-sm" style="padding-right: 2px;">
-                <a href="sales.php?from=from-total-sales" style="text-decoration: none;">
-                    <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
-                        <div class="card-body">
+                <form action="sales.php" method="POST">
+                    <div class="card card text-white bg-dark mb-3" style="max-width: 25rem;">
+                        <button name="from-form-dashboard" type="submit" class="btn btn-dark" style="max-width: 25rem;">
                             <h3 id="total_sales_count"><?php echo $total_sales_count?></h3>
                             <h6>Total Sales</h6>
-                        </div>
+                        </button>
                     </div>
-                </a>
+                    <input type="hidden" name="from" value="form-total-sales" />
+                </form>
             </div>
         </div>
         <div class="row justify-content-center">
