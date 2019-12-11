@@ -94,7 +94,7 @@ if(isset($_POST["form-add-publisher"])){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
-<body background="resources/img/background.jpg" style="background-size: 100%;">
+<body background="resources/img/download.jpeg" style="background-size: 100%;">
     <div class="container">
         <div class="row">
             <div class="col-sm">
@@ -115,13 +115,13 @@ if(isset($_POST["form-add-publisher"])){
         <div class="row" style="margin-top: 15px">
             <div class="col-sm">
                 <div style="margin-bottom: 5px">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#publisher-add-modal">Add New</button>
+                    <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#publisher-add-modal">Add New</button>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm">
-                <table class="table table-boderless table-dark">
+                <table class="table table-hover table-dark">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -138,13 +138,11 @@ if(isset($_POST["form-add-publisher"])){
                                     echo '<th scope="row">'.$index.'</th>';
                                     echo '<td>'.$row["fname"].' '.$row['lname'].'</td>';
                                     echo '<td>'.$row['email'].'</td>';
-                                    echo '<div class="float-right">';
-                                        echo '<td>';
-                                            echo '<button class="btn btn-warning" style="margin-right:10px" type="button" data-toggle="modal" data-target="#publisher-view-modal'.$row['publisher_id'].'">View</button>';
-                                            echo '<button class="btn btn-success" style="margin-right:10px" type="button" data-toggle="modal" data-target="#publisher-update-modal'.$row['publisher_id'].'">Update</button>';
-                                            echo '<button class="btn btn-danger" style="margin-right:10px" type="button" data-toggle="modal" data-target="#publisher-delete-modal'.$row['publisher_id'].'">Delete</button>';
+                                        echo '<td class="float-right">';
+                                            echo '<button class="btn btn-sm btn-warning" style="margin-right:10px" type="button" data-toggle="modal" data-target="#publisher-view-modal'.$row['publisher_id'].'">View</button>';
+                                            echo '<button class="btn btn-sm btn-success" style="margin-right:10px" type="button" data-toggle="modal" data-target="#publisher-update-modal'.$row['publisher_id'].'">Update</button>';
+                                            echo '<button class="btn btn-sm btn-danger" style="margin-right:10px" type="button" data-toggle="modal" data-target="#publisher-delete-modal'.$row['publisher_id'].'">Delete</button>';
                                         echo '</td>';
-                                    echo '</div>';
 
                                     require "components/modals/publisher/publisher-view-modal.php";
                                     require "components/modals/publisher/publisher-update-modal.php";

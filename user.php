@@ -94,7 +94,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
-<body background="resources/img/background.jpg" style="background-size: 100%;">
+<body background="resources/img/download.jpeg" style="background-size: 100%;">
     <div class="container">
         <div class="row">
             <div class="col-sm">
@@ -115,7 +115,7 @@
 
         <div class="row">
             <div class="col-sm">
-                <table class="table table-boderless table-dark">
+                <table class="table table-hover table-dark">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -133,16 +133,16 @@
                             foreach($row_list as $row){
                                 echo '<tr>';
                                     echo '<th scope="row">'.$index.'</th>';
-                                    echo '<td><img src="resources/uploads/propics/users/'.$row['propic'].'" style="border-radius:50%" weidth="50px" height="50px" /></td>';
+                                    echo '<td><img src="resources/uploads/propics/users/'.$row['propic'].'" style="border-radius:50%" weidth="35px" height="35px" /></td>';
                                     echo '<td>'.$row["fname"].' '.$row['lname'].'</td>';
                                     echo '<td>'.$row['birthday'].'</td>';
                                     echo '<td>'.$row['gender'].'</td>';
                                     echo '<td>'.$row['email'].'</td>';
                                     echo '<div class="float-right">';
                                         echo '<td>';
-                                            echo '<button class="btn btn-warning" style="margin-right:10px" type="button" data-toggle="modal" data-target="#user-view-modal'.$row['user_id'].'">View</button>';
-                                            echo '<button class="btn btn-success" style="margin-right:10px" type="button" data-toggle="modal" data-target="#user-update-modal'.$row['user_id'].'">Update</button>';
-                                            echo '<button class="btn btn-danger" style="margin-right:10px" type="button" data-toggle="modal" data-target="#user-delete-modal'.$row['user_id'].'">Delete</button>';
+                                            echo '<button class="btn btn-sm btn-warning" style="margin-right:10px" type="button" data-toggle="modal" data-target="#user-view-modal'.$row['user_id'].'">View</button>';
+                                            echo '<button class="btn btn-sm btn-success" style="margin-right:10px" type="button" data-toggle="modal" data-target="#user-update-modal'.$row['user_id'].'">Update</button>';
+                                            echo '<button class="btn btn-sm btn-danger" style="margin-right:10px" type="button" data-toggle="modal" data-target="#user-delete-modal'.$row['user_id'].'">Delete</button>';
                                         echo '</td>';
                                     echo '</div>';
 

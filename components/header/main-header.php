@@ -10,31 +10,32 @@
     }
 ?>
 
-<nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="index.php">Online Library System</a>
-    <form class="form-inline">
-        <?php
-        if(isset($_SESSION["user-logged"])){
-                    echo '<div class="form-group">';
-                        if(isset($_SESSION["added-to-shoppingcart"])){
-                            echo '<a href="shoppingcart.php" class="btn btn-sm btn-primary" style="margin-right: 5px" type="button">Shopping Cart : '.$shoppingcart_item_count.'</a>';
-                        }
-                        echo '<a href="account.php" class="btn btn-sm btn-primary" style="margin-right: 5px" type="button">Account</a>';
-                        echo '<a href="user-logout.php" class="btn btn-sm btn-danger" type="button">Logout</a>';
-                    echo '</div>';
-        }else if(isset($_SESSION["admin-logged"])){
-                    echo '<div class="form-group">';
-                        echo '<a href="dashboard.php" class="btn btn-sm btn-primary" style="margin-right: 5px" type="button">Admin Dashboard</a>';
-                        echo '<a href="admin-logout.php" class="btn btn-sm btn-danger" type="button">Admin Logout</a>';
-                    echo '</div>';
-        }else{
-                echo '<button type="button" class="btn btn-sm btn-danger" style="margin-right: 5px" data-toggle="modal" data-target="#admin-register-modal">Admin Register</button>';
-                echo '<button type="button" class="btn btn-sm btn-danger" style="margin-right: 5px" data-toggle="modal" data-target="#admin-login-modal">Admin Login</button>';
-                echo '<button type="button" class="btn btn-sm btn-danger" style="margin-right: 5px" data-toggle="modal" data-target="#user-register-modal">Register</button>';
-                echo '<button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#user-login-modal">Login</button>';
-            }
-        ?>
-    </form>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.php" style="font-size: 25px; font-weight: bold; color:rgb(0, 0, 0);">Online Library System</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav align-items-end ml-auto">
+                <?php
+                if(isset($_SESSION["user-logged"])){
+                            if(isset($_SESSION["added-to-shoppingcart"])){
+                                echo '<li class="nav-item"><form method="POST" action="shoppingcart.php"><button name="form-main-header-shoppingcart" class="btn btn-sm btn-primary" style="margin-right: 5px" type="submit">Shopping Cart : '.$shoppingcart_item_count.'</button></form></li>';
+                            }
+                            echo '<li class="nav-item"><form action="account.php" method="POST"><button name="form-main-header-account" class="btn btn-sm btn-primary" style="margin-right: 5px; border-radius: 10px;" type="submit">Account</button></form></li>';
+                            echo '<li class="nav-item"><form action="user-logout.php" method="POST"><button name="form-main-header-user-logout" class="btn btn-sm btn-danger" style="margin-right: 5px; border-radius: 10px;" type="submit">Logout</button></form></li>';
+                    
+                }else if(isset($_SESSION["admin-logged"])){
+                        echo '<li class="nav-item"><form action="dashboard.php" method="POST"><button name="form-main-header-seller-dashboard" class="btn btn-sm btn-primary" style="margin-right: 5px; border-radius: 10px;" type="submit">Seller Dashboard</button></form></li>';
+                        echo '<li class="nav-item"><form action="admin-logout.php" method="POST"><button name="form-main-header-seller-logout" class="btn btn-sm btn-danger" style="margin-right: 5px; border-radius: 10px;" type="submit">Seller Logout</button></form></li>';
+                
+                }else{
+                        echo '<li class="nav-item"><button type="button" class="btn btn-sm btn-danger" style="margin-right: 5px; border-radius: 10px; height: 30px;" data-toggle="modal" data-target="#admin-register-modal">Seller Register</button></li>';
+                        echo '<li class="nav-item"><button type="button" class="btn btn-sm btn-danger" style="margin-right: 5px; border-radius: 10px; height: 30px;" data-toggle="modal" data-target="#admin-login-modal">Seller Login</button></li>';
+                        echo '<li class="nav-item"><button type="button" class="btn btn-sm btn-danger" style="margin-right: 5px; border-radius: 10px; height: 30px;" data-toggle="modal" data-target="#user-register-modal">User Register</button></li>';
+                        echo '<li class="nav-item"><button type="button" class="btn btn-sm btn-danger" style="margin-right: 5px; border-radius: 10px; height: 30px;" data-toggle="modal" data-target="#user-login-modal">User Login</button></li>';
+                    
+                    }
+                ?>
+            </ul>
+    </div>
 </nav>
 
 

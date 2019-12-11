@@ -95,7 +95,7 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 </head>
-<body background="resources/img/background.jpg" style="background-size: 100%;">
+<body background="resources/img/download.jpeg" style="background-size: 100%;">
     <div class="container">
         <div class="row">
             <div class="col">
