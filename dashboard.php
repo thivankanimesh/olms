@@ -204,13 +204,6 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
 
-                <?php 
-
-                    $offset_date = date("Y-m-d",strtotime(date('Y-m-d').' -7 days')); 
-
-                    $query10 = "select purchasing_records.ebook_id as purchasing_records_ebook_id from purchasing_records where purchasing_records.date like '' and purchasing_records.admin_id=$admin_id";
-                ?>
-
                 <script type="text/javascript">
                     google.charts.load("current", {packages:['corechart']});
                     google.charts.setOnLoadCallback(drawChart);
@@ -254,15 +247,28 @@
                         data.addColumn('date', 'Day');
                         data.addColumn('number', 'Sales');
 
-                        datasetObj = [
-                            [new Date(2015, 1, 1), 5],  [new Date(2015, 1, 2), 7],  [new Date(2015, 1, 3), 3],
-                            [new Date(2015, 1, 4), 1],  [new Date(2015, 1, 5), 3],  [new Date(2015, 1, 6), 4]
-                        ];
+                        datasetObj = [];
 
-                        datasetObj.push([new Date(2015, 1, 7), 3]);
+                        <?php 
+
+                            $today = date("Y/m/d");
+
+                            for($i = 0; $i<7;$i++){
+
+                                $number = 6 - $i;
+                                $day = date("Y/m/d",strtotime(date('Y/m/d').' -'.$number.' days')); 
+                                $query10 = "select count(purchasing_records.purchasing_record_id) from purchasing_records inner join ebook on ebook.ebook_id = purchasing_records.ebook_id where purchasing_records.date='$day' and ebook.admin_id=$admin_id";
+                                $result10 = mysqli_query($con,$query10);
+
+                                echo 'var d = new Date();';
+                                echo 'var subs = 6 - '.$i.';';
+                                echo 'd.setDate(d.getDate() - subs);';
+
+                                echo 'datasetObj.push([d, '.mysqli_fetch_array($result10)[0].']);';
+                            }
+                        ?>
 
                         data.addRows(datasetObj);
-
 
                         var options = {
                         title: 'Last 7 day sales',
@@ -298,5 +304,33 @@
             </div>
         </div>
     </div>
+    <br />
+    <footer style="background-color: blue; height: 100px; width: 100%;">
+        <div class="container">
+            <br />
+            <div class="row">
+                <div class="col-sm" style="text-align: center;">
+                    <a href="#" style="color: white; text-decoration: none;">About Us</a>
+                </div>
+                <div class="col-sm" style="text-align: center;">
+                    <a href="#" style="color: white; text-decoration: none;">Contacts</a>
+                </div>
+                <div class="col-sm" style="text-align: center;">
+                    <a href="#" style="color: white; text-decoration: none;">Terms of Service</a>
+                </div>
+                <div class="col-sm" style="text-align: center;">
+                    <a href="#" style="color: white; text-decoration: none;">Privacy Policy</a>
+                </div>
+                <div class="col-sm" style="text-align: center;">
+                    <a href="#" style="color: white; text-decoration: none;">Blog</a>
+                </div>  
+                <div class="col-sm" style="text-align: center;">
+                    <a href="#" style="color: white; text-decoration: none;">FAQ</a>
+                </div>
+            </div>
+            <hr />
+            <p style="text-align: center; color: white; font-size: 10px;">© 2019 Online Libary System Pvt(Ltd). All Right Reserved</p>
+        </div>
+    </footer>
 </body>
 </html>
