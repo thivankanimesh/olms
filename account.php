@@ -105,7 +105,7 @@
         </div>
         <div class="row">
             <div class="col">
-            <table class="table table-boderless table-dark">
+            <table class="table table-hover table-boderless table-dark">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -123,32 +123,30 @@
                             foreach($row_list as $row){
                                 echo '<tr>';
                                     echo '<th scope="row">'.$index.'</th>';
-                                    echo '<td><img src="resources/uploads/admins/ebooks/coverpic/'.$row['ebook_cover_pic'].'" style="border-radius:50%" weidth="50px" height="50px" /></td>';
+                                    echo '<td><img src="resources/uploads/admins/ebooks/coverpic/'.$row['ebook_cover_pic'].'" style="border-radius:50%" weidth="35px" height="35px" /></td>';
                                     echo '<td>'.$row["ebook_title"].'</td>';
                                     echo '<td>'.$row['ebook_description'].'</td>';
                                     echo '<td>'.$row['category_name'].'</td>';
                                     echo '<td>'.$row['author_fname'].' '.$row['author_lname'].'</td>';
-                                    echo '<div class="float-right">';
-                                        echo '<td>';
+                                        echo '<td class="float-right">';
                                             echo '<div class="row">';
                                                 echo '<div class="col">';
                                                     echo '<form action="viewpdf.php" method="POST">';
                                                         echo '<input type="hidden" name="ebook_pdf_name" value="'.$row['ebook_pdf_name'].'" />';
-                                                        echo '<input name="form-view-pdf" class="btn btn-warning" style="margin-right:10px" type="submit" value="View" />';
+                                                        echo '<input name="form-view-pdf" class="btn btn-sm btn-warning" style="margin-right:10px" type="submit" value="View" />';
                                                     echo '</form>';
                                                 echo '</div>';
                                                 echo '<div class="col">';
                                                     echo '<form action="account.php" method="GET">
                                                     <input type="hidden" name="pdf_name_to_download" value="'.$row['ebook_pdf_name'].'" />
-                                                    <input name="download_pdf" class="btn btn-success" style="margin-right:10px" type="submit" value="Download" />
+                                                    <input name="download_pdf" class="btn btn-sm btn-success" style="margin-right:10px" type="submit" value="Download" />
                                                 </form>';
                                                 echo '</div>';
                                                 echo '<div class="col">';
-                                                echo '<button class="btn btn-danger" style="margin-right:10px" type="button" data-toggle="modal" data-target="#pdf-delete-modal'.$row['ebook_ebook_id'].'">Delete</button>';
+                                                echo '<button class="btn btn-sm btn-danger" style="margin-right:10px" type="button" data-toggle="modal" data-target="#pdf-delete-modal'.$row['ebook_ebook_id'].'">Delete</button>';
                                                 echo '</div>';
                                             echo '</div>';  
                                         echo '</td>';
-                                    echo '</div>';
                                     require "components/modals/account/pdf-delete-modal.php";
                                 echo '</tr>';
                                 $index++; 

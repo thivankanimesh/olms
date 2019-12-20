@@ -71,22 +71,22 @@
     $title = "";
     if(strcmp($from,"form-this-year-sales")==0){
 
-        $result3 = mysqli_query($con,"select DISTINCT ebook.ebook_id as ebook_ebook_id, ebook.title as ebook_title from ebook inner join purchasing_records on purchasing_records.ebook_id = ebook.ebook_id where purchasing_records.date like '$year%' and admin_id = $admin_id limit $start, $end");
+        $result3 = mysqli_query($con,"select DISTINCT ebook.ebook_id as ebook_ebook_id, ebook.title as ebook_title, ebook.cover_pic as ebook_cover_pic from ebook inner join purchasing_records on purchasing_records.ebook_id = ebook.ebook_id where purchasing_records.date like '$year%' and admin_id = $admin_id limit $start, $end");
         $title = "Yearly Sales";
 
     }else if(strcmp($from,"form-this-month-sales")==0){
 
-        $result3 = mysqli_query($con,"select DISTINCT ebook.ebook_id as ebook_ebook_id, ebook.title as ebook_title from ebook inner join purchasing_records on purchasing_records.ebook_id = ebook.ebook_id where purchasing_records.date like '$year/$month%' and admin_id = $admin_id limit $start, $end");
+        $result3 = mysqli_query($con,"select DISTINCT ebook.ebook_id as ebook_ebook_id, ebook.title as ebook_title, ebook.cover_pic as ebook_cover_pic from ebook inner join purchasing_records on purchasing_records.ebook_id = ebook.ebook_id where purchasing_records.date like '$year/$month%' and admin_id = $admin_id limit $start, $end");
         $title = "Monthly Sales";
 
     }else if(strcmp($from,"form-today-sales")==0){
 
-        $result3 = mysqli_query($con,"select DISTINCT ebook.ebook_id as ebook_ebook_id, ebook.title as ebook_title from ebook inner join purchasing_records on purchasing_records.ebook_id = ebook.ebook_id where purchasing_records.date like '$year/$month/$date%' and admin_id = $admin_id limit $start, $end");
+        $result3 = mysqli_query($con,"select DISTINCT ebook.ebook_id as ebook_ebook_id, ebook.title as ebook_title, ebook.cover_pic as ebook_cover_pic from ebook inner join purchasing_records on purchasing_records.ebook_id = ebook.ebook_id where purchasing_records.date like '$year/$month/$date%' and admin_id = $admin_id limit $start, $end");
         $title = "Today Sales";
 
     }else if(strcmp($from,"form-total-sales")==0){
 
-        $result3 = mysqli_query($con,"select DISTINCT ebook.ebook_id as ebook_ebook_id, ebook.title as ebook_title from ebook inner join purchasing_records on purchasing_records.ebook_id = ebook.ebook_id where admin_id = $admin_id limit $start, $end");
+        $result3 = mysqli_query($con,"select DISTINCT ebook.ebook_id as ebook_ebook_id, ebook.title as ebook_title, ebook.cover_pic as ebook_cover_pic from ebook inner join purchasing_records on purchasing_records.ebook_id = ebook.ebook_id where admin_id = $admin_id limit $start, $end");
         $title = "Total Sales";
 
     }else {
@@ -137,6 +137,7 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
+                            <th scope="col"></th>
                             <th scope="col">Name</th>
                             <th scope="col">Sales</th>
                         </tr>
@@ -169,6 +170,7 @@
                                 
                                     echo '<tr>
                                         <td>'.$index.'</td>
+                                        <td><img src="resources/uploads/admins/ebooks/coverpic/'.$row['ebook_cover_pic'].'" style="border-radius:50%" weidth="35px" height="35px" /></td>
                                         <td>'.$row['ebook_title'].'</td>
                                         <td>'.mysqli_fetch_array($result4)[0].'</td>
                                     </tr>';
