@@ -5,6 +5,8 @@
     $db_password = "thiva456";
     $db_name = "olms";
 
-    $con = mysqli_connect($db_servername,$db_username,$db_password,$db_name);
+    $con = new PDO("mysql:host=$db_servername;dbname=$db_name",$db_username,$db_password);
+
+    $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 ?>

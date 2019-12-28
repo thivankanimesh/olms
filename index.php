@@ -1,39 +1,36 @@
 <?php 
     session_start();
+?>
 
-    include "database.php";
+<?php 
+    require_once("database.php");
 ?>
 
 <?php 
 
     $row_list1 = array();
-
-    $query1 = "select name from category";
-
-    $result1 = mysqli_query($con,$query1);
-
-    while($row1 = mysqli_fetch_array($result1)){
-        $row_list1[] = $row1;
-    }
-
     $row_list2 = array();
-
-    $query3 = "select fname, lname from author";
-
-    $result3 = mysqli_query($con,$query3);
-
-    while($row2 = mysqli_fetch_array($result3)){
-        $row_list2[] = $row2;
-    }
-
     $row_list3 = array();
 
-    $query4 = "select fname, lname from publisher";
+    $stmt = $con->prepare("select name from category");
+    $stmt->execute();
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    while($row = $stmt->fetch()){
+        $row_list1[] = $row;
+    }
 
-    $result4 = mysqli_query($con,$query4);
+    $stmt = $con->prepare("select fname, lname from author");
+    $stmt->execute();
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    while($row = $stmt->fetch()){
+        $row_list2[] = $row;
+    }
 
-    while($row3 = mysqli_fetch_array($result4)){
-        $row_list3[] = $row3;
+    $stmt = $con->prepare("select fname, lname from publisher");
+    $stmt->execute();
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    while($row = $stmt->fetch()){
+        $row_list3[] = $row;
     }
 
 ?>
@@ -44,7 +41,7 @@
 
     if(isset($_POST['form-search'])){
 
-        $q = $_POST['q'];
+        $q = '%'.$_POST['q'].'%';
         $category_name = $_POST['category'];
         $author_name = $_POST['author'];
         $publisher_name = $_POST['publisher'];
@@ -56,35 +53,74 @@
         $publisher_name_array[] = explode(" ",$publisher_name,2);
 
         if($category_name == "-Select Category-" && $author_name == "-Select Author-" && $publisher_name == "-Select Publisher-"){
-            $query2 = "select*from ebook where title like '%$q%' ";
+            $query2 = "select*from ebook where title like (:q)";
+            $stmt = $con->prepare($query2);
+            $stmt->bindParam( ':q',$q, PDO::PARAM_STR);
         }else if($author_name == "-Select Author-" && $publisher_name == "-Select Publisher-") {
-            $query2 = "select*from ebook inner join category on category.category_id = ebook.category_id where ebook.title like '%$q%' and category.name = '$category_name'";
+            $query2 = "select*from ebook inner join category on category.category_id = ebook.category_id where ebook.title like (:q) and category.name = (:category_name)";
+            $stmt = $con->prepare($query2);
+            $stmt->bindParam(':q',$q,PDO::PARAM_STR);
+            $stmt->bindParam(':category_name',$category_name,PDO::PARAM_STR);
         }else if($category_name == "-Select Category-" && $publisher_name == "-Select Publisher-"){
-            $query2 = "select*from ebook inner join author on author.author_id = ebook.author_id where ebook.title like '%$q%' and (author.fname = '".$author_name_array[0][0]."' or author.lname = '".$author_name_array[0][1]."')";
+            $query2 = "select*from ebook inner join author on author.author_id = ebook.author_id where ebook.title like (:q) and (author.fname = (:author_fname) or author.lname = (:author_lname))";
+            $stmt = $con->prepare($query2);
+            $stmt->bindParam(':q',$q,PDO::PARAM_STR);
+            $stmt->bindParam(':author_fname',$author_name_array[0][0],PDO::PARAM_STR);
+            $stmt->bindParam(':author_lname',$author_name_array[0][1],PDO::PARAM_STR);
         }else if($category_name == "-Select Category-" && $author_name == "-Select Author-"){
-            $query2 = "select*from ebook inner join publisher on publisher.publisher_id = ebook.publisher_id where ebook.title like '%$q%' and (publisher.fname = '".$publisher_name_array[0][0]."' or publisher.lname = '".$publisher_name_array[0][1]."')";
+            $query2 = "select*from ebook inner join publisher on publisher.publisher_id = ebook.publisher_id where ebook.title like (:q) and (publisher.fname = (:publisher_fname) or publisher.lname = (:publisher_lname))";
+            $stmt = $con->prepare($query2);
+            $stmt->bindParam(':q',$q,PDO::PARAM_STR);
+            $stmt->bindParam(':publisher_fname',$publisher_name_array[0][0],PDO::PARAM_STR);
+            $stmt->bindParam(':publisher_lname',$publisher_name_array[0][1],PDO::PARAM_STR);
         }else if($publisher_name == "-Select Publisher-"){
-            $query2 = "select*from ebook inner join category on category.category_id = ebook.category_id inner join author on author.author_id = ebook.author_id where ebook.title like '%$q%' and category.name = '$category_name' and (author.fname = '".$author_name_array[0][0]."' or author.lname = '".$author_name_array[0][1]."')";
+            $query2 = "select*from ebook inner join category on category.category_id = ebook.category_id inner join author on author.author_id = ebook.author_id where ebook.title like (:q) and category.name = (:category_name) and (author.fname = (:author_fname) or author.lname = (:author_lname))";
+            $stmt = $con->prepare($query2);
+            $stmt->bindParam(':q',$q,PDO::PARAM_STR);
+            $stmt->bindParam(':category_name',$category_name,PDO::PARAM_STR);
+            $stmt->bindParam(':author_fname',$author_name_array[0][0],PDO::PARAM_STR);
+            $stmt->bindParam(':author_lname',$author_name_array[0][1],PDO::PARAM_STR);
         }else if($author_name == "-Select Author-"){
-            $query2 = "select*from ebook inner join category on category.category_id = ebook.category_id inner join publisher on publisher.publisher_id = ebook.publisher_id where ebook.title like '%$q%' and category.name = '$category_name' and (publisher.fname = '".$publisher_name_array[0][0]."' or publisher.lname = '".$publisher_name_array[0][1]."')";
+            $query2 = "select*from ebook inner join category on category.category_id = ebook.category_id inner join publisher on publisher.publisher_id = ebook.publisher_id where ebook.title like (:q) and category.name = (:category_name) and (publisher.fname = (:publisher_fname) or publisher.lname = (:publisher_lname))";
+            $stmt = $con->prepare($query2);
+            $stmt->bindParam(':q',$q,PDO::PARAM_STR);
+            $stmt->bindParam(':category_name',$category_name,PDO::PARAM_STR);
+            $stmt->bindParam(':publisher_fname',$publisher_name_array[0][0],PDO::PARAM_STR);
+            $stmt->bindParam(':publisher_lname',$publisher_name_array[0][1],PDO::PARAM_STR);
         }else if($category_name == "-Select Category-"){
-            $query2 = "select*from ebook inner join author on author.author_id = ebook.author_id inner join publisher on publisher.publisher_id = ebook.publisher_id where ebook.title like '%$q%' and (author.fname = '".$author_name_array[0][0]."' or author.lname = '".$author_name_array[0][1]."') and (publisher.fname = '".$publisher_name_array[0][0]."' or publisher.lname = '".$publisher_name_array[0][1]."')";
+            $query2 = "select*from ebook inner join author on author.author_id = ebook.author_id inner join publisher on publisher.publisher_id = ebook.publisher_id where ebook.title like (:q) and (author.fname = (:author_fname) or author.lname = (:author_lname)) and (publisher.fname = (:publisher_fname) or publisher.lname = (:publisher_lname))";
+            $stmt = $con->prepare($query2);
+            $stmt->bindParam(':q',$q,PDO::PARAM_STR);
+            $stmt->bindParam(':author_fname',$author_name_array[0][0],PDO::PARAM_STR);
+            $stmt->bindParam(':author_lname',$author_name_array[0][1],PDO::PARAM_STR);
+            $stmt->bindParam(':publisher_fname',$publisher_name_array[0][0],PDO::PARAM_STR);
+            $stmt->bindParam(':publisher_lname',$publisher_name_array[0][1],PDO::PARAM_STR);
         }else {
-            $query2 = "select*from ebook inner join category on category.category_id = ebook.category_id inner join author on author.author_id = ebook.author_id inner join publisher on publisher.publisher_id = ebook.publisher_id where ebook.title like '%$q%' and category.name = '$category_name' and (author.fname = '".$author_name_array[0][0]."' or author.lname = '".$author_name_array[0][1]."') and (publisher.fname = '".$publisher_name_array[0][0]."' or publisher.lname = '".$publisher_name_array[0][1]."')";
+            $query2 = "select*from ebook inner join category on category.category_id = ebook.category_id inner join author on author.author_id = ebook.author_id inner join publisher on publisher.publisher_id = ebook.publisher_id where ebook.title like (:q) and category.name = (:category_name) and (author.fname = (:author_fname) or author.lname = (:author_lname)) and (publisher.fname = (:publisher_fname) or publisher.lname = (:publisher_lname))";
+            $stmt = $con->prepare($query2);
+            $stmt->bindParam(':q',$q,PDO::PARAM_STR);
+            $stmt->bindParam(':category_name',$category_name,PDO::PARAM_STR);
+            $stmt->bindParam(':author_fname',$author_name_array[0][0],PDO::PARAM_STR);
+            $stmt->bindParam(':author_lname',$author_name_array[0][1],PDO::PARAM_STR);
+            $stmt->bindParam(':publisher_fname',$publisher_name_array[0][0],PDO::PARAM_STR);
+            $stmt->bindParam(':publisher_lname',$publisher_name_array[0][1],PDO::PARAM_STR);
         }
 
-        $result2 = mysqli_query($con,$query2);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
-        while($row = mysqli_fetch_array($result2)){
+        while($row = $stmt->fetch()){
             $row_list[] = $row;
         }
 
     }else {
 
         $query = "select ebook.* , category.name as category_name, author.fname as author_fname, author.lname as author_lname, publisher.fname as publisher_fname, publisher.lname as publisher_lname from ebook inner join category on category.category_id = ebook.category_id inner join author on author.author_id = ebook.author_id inner join publisher on publisher.publisher_id = ebook.publisher_id";
-        $result = mysqli_query($con,$query);
+        $stmt = $con->prepare($query);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
-        while($row = mysqli_fetch_array($result)){
+        while($row = $stmt->fetch()){
             $row_list[] = $row;
         }
 
@@ -100,10 +136,15 @@
         $page = $_GET['page'];
     }
 
-    $result = mysqli_query($con,"select count(ebook_id) from ebook");
-    $rows_array = mysqli_fetch_array($result);
+    $stmt = $con->prepare("select count(ebook_id) from ebook");
+    $stmt->execute();
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $rows_array = array();
+    while($row = $stmt->fetch()){
+        $rows_array = $row;
+    }
 
-    $ebook_count = $rows_array[0];
+    $ebook_count = $rows_array['count(ebook_id)'];
 
     $items_per_page = 10;
     $required_pages = ceil($ebook_count/$items_per_page); 
