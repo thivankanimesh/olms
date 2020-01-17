@@ -1,2 +1,3 @@
-resources/uploads/admins/ebooks/coverpic
-resources/uploads/admins/ebooks/pdf
+resources/uploads/admins/ebooks/coverpic/*
+resources/uploads/admins/ebooks/pdf/*
+resources/uploads/propics/users/*

@@ -54,9 +54,9 @@
         // Set user id as session
         $result = mysqli_query($con,"select user_id from user where email = '$email'");
         $row = $result->fetch_object();
-        $_SESSION["user-logged"]=$row->uid;
+        $_SESSION["user-logged"]=$row->user_id;
         mysqli_close($con);
 
-        header('Location:index.php');
+        header('Location:account.php');
     }   
 ?>
