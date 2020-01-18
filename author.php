@@ -107,7 +107,7 @@ if(isset($_POST["form-add-author"])){
         </div>
         <div class="row">
             <div class="col-sm">
-                <div style="background-color:#8B0000;color:white">
+                <div style="background-color:#003300;color:white">
                     <h2 class="text-center">Authors</h2>
                 </div>
             </div>

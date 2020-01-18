@@ -271,7 +271,7 @@
         ?>
     </div> 
     <br />
-    <footer style="background-color: blue; height: 100px; width: 100%;">
+    <footer style="background-color: #003320; height: 100px; width: 100%;">
             <div class="container">
                 <br />
                 <div class="row">

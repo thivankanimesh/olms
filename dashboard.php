@@ -110,7 +110,7 @@
         <div class="row" style="padding-top: 10px">
             <div class="col-sm" style="padding-right: 2px;">
                 <a href="user.php" style="text-decoration: none">
-                    <div class="card text-white bg-info mb-3" style="max-width: 25rem">
+                    <div class="card text-white mb-3" style="max-width: 25rem; background-color:#003300;">
                         <div class="card-body">
                             <h1><?php echo $user_count?></h1>
                             <h6>Total Users</h6>
@@ -120,17 +120,17 @@
             </div>
             <div class="col-sm" style="padding-right: 2px;">
                 <a href="ebook.php" style="text-decoration: none;">
-                    <div class="card text-white bg-danger mb-3" style="max-width: 25rem;">
+                    <div class="card text-white mb-3" style="max-width: 25rem; background-color:#001900;">
                         <div class="card-body">
                             <h1><?php echo $ebook_count?></h1>
-                            <h6>Total Ebooks</h6>
+                            <h6>Total eBooks</h6>
                         </div>
                     </div>
                 </a>
             </div>
             <div class="col-sm" style="padding-right: 2px;">
                 <a href="category.php" style="text-decoration: none;">
-                    <div class="card text-white bg-warning mb-3" style="max-width: 25rem;">
+                    <div class="card text-white mb-3" style="max-width: 25rem; background-color:#003300;">
                         <div class="card-body">
                             <h1><?php echo $category_count?></h1>
                             <h6>Total Categories</h6>
@@ -140,7 +140,7 @@
             </div>
             <div class="col-sm" style="padding-right: 2px;">
                 <a href="author.php" style="text-decoration: none;">
-                    <div class="card text-white bg-primary mb-3" style="max-width: 25rem;">
+                    <div class="card text-white mb-3" style="max-width: 25rem; background-color:#001900;">
                         <div class="card-body">
                             <h1><?php echo $author_count?></h1>
                             <h6>Total Authors</h6>
@@ -150,7 +150,7 @@
             </div>
             <div class="col-sm" style="padding-right: 2px;">
                 <a href="publisher.php" style="text-decoration: none;">
-                    <div class="card text-white bg-success mb-3" style="max-width: 25rem;">
+                    <div class="card text-white mb-3" style="max-width: 25rem; background-color:#003300;">
                         <div class="card-body">
                             <h1><?php echo $publisher_count?></h1>
                             <h6>Total Publishers</h6>
@@ -162,8 +162,8 @@
         <div class="row">
             <div class="col-sm" style="padding-right: 2px;">
                 <form action="sales.php" method="POST">
-                    <div class="card card text-white bg-dark mb-3" style="max-width: 25rem;">
-                        <button name="from-form-dashboard" type="submit" class="btn btn-dark" style="max-width: 25rem;">
+                    <div class="card card text-white mb-3" style="max-width: 25rem; background-color:#000000;">
+                        <button name="from-form-dashboard" type="submit" class="btn" style="max-width: 25rem; color:#ffffff;">
                             <h3 id="this_year_sales_count"><?php echo $this_year_sales_count?></h3>
                             <h6>Yearly Sales</h6>
                         </button>
@@ -173,8 +173,8 @@
             </div>
             <div class="col-sm" style="padding-right: 2px;">
                 <form action="sales.php" method="POST">
-                    <div class="card card text-white bg-dark mb-3" style="max-width: 25rem;">
-                        <button name="from-form-dashboard" type="submit" class="btn btn-dark" style="max-width: 25rem;">
+                    <div class="card card text-white mb-3" style="max-width: 25rem; background-color:#000000;">
+                        <button name="from-form-dashboard" type="submit" class="btn" style="max-width: 25rem; color:#ffffff;">
                             <h3 id="this_month_sales_count"><?php echo $this_month_sales_count?></h3>
                             <h6>Monthly Sales</h6>
                         </button>
@@ -184,8 +184,8 @@
             </div>
             <div class="col-sm" style="padding-right: 2px;">
                 <form action="sales.php" method="POST">
-                    <div class="card card text-white bg-dark mb-3" style="max-width: 25rem;">
-                        <button name="from-form-dashboard" type="submit" class="btn btn-dark" style="max-width: 25rem;">
+                    <div class="card card text-white mb-3" style="max-width: 25rem; background-color:#000000;">
+                        <button name="from-form-dashboard" type="submit" class="btn" style="max-width: 25rem; color:#ffffff;">
                             <h3 id="today_sales_count"><?php echo $today_sales_count?></h3>
                             <h6>Today Sales</h6>
                         </button>
@@ -195,8 +195,8 @@
             </div>
             <div class="col-sm" style="padding-right: 2px;">
                 <form action="sales.php" method="POST">
-                    <div class="card card text-white bg-dark mb-3" style="max-width: 25rem;">
-                        <button name="from-form-dashboard" type="submit" class="btn btn-dark" style="max-width: 25rem;">
+                    <div class="card card text-white mb-3" style="max-width: 25rem; background-color:#000000;">
+                        <button name="from-form-dashboard" type="submit" class="btn" style="max-width: 25rem; color:#ffffff;">
                             <h3 id="total_sales_count"><?php echo $total_sales_count?></h3>
                             <h6>Total Sales</h6>
                         </button>
@@ -309,7 +309,7 @@
         </div>
     </div>
     <br />
-    <footer style="background-color: blue; height: 100px; width: 100%;">
+    <footer style="background-color:#003320; height: 100px; width: 100%;">
         <div class="container">
             <br />
             <div class="row">
