@@ -4,7 +4,7 @@
     if(isset($_SESSION["user-logged"])){
         $user_id = $_SESSION["user-logged"];
     }else{
-        header('Location:user-login-view.php');
+        header('Location:index.php');
         exit();
     }
 ?>
