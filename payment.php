@@ -57,6 +57,8 @@
         $query6 = "truncate table shoppingcart";
         mysqli_query($con,$query6);
 
+        unset($_SESSION["added-to-shoppingcart"]);
+
         header('Location:account.php');
 
     }
