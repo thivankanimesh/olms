@@ -140,6 +140,7 @@
                             <th scope="col"></th>
                             <th scope="col">Name</th>
                             <th scope="col">Sales</th>
+                            <th scope="col">Income</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -150,7 +151,7 @@
 
                                     if(strcmp($from,"form-this-year-sales")==0){
 
-                                        $result4 = mysqli_query($con,"select count(purchasing_records.ebook_id) from ebook inner join purchasing_records on purchasing_records.ebook_id = ebook.ebook_id where purchasing_records.ebook_id=".$row['ebook_ebook_id']." and purchasing_records.date like '$year%' and ebook.admin_id=".$admin_id."");
+                                        $result4 = mysqli_query($con,"select count(purchasing_records.ebook_id), sum(purchasing_records.sold_price) from ebook inner join purchasing_records on purchasing_records.ebook_id = ebook.ebook_id where purchasing_records.ebook_id=".$row['ebook_ebook_id']." and purchasing_records.date like '$year%' and ebook.admin_id=".$admin_id."");
                                 
                                     }else if(strcmp($from,"form-this-month-sales")==0){
                                 
@@ -167,13 +168,16 @@
                                     }else {
                                         header('Location:dashboard.php');
                                     }
+
+                                    $data4 = mysqli_fetch_array($result4);
                                 
-                                    echo '<tr>
+                                    echo '
                                         <td>'.$index.'</td>
                                         <td><img src="resources/uploads/admins/ebooks/coverpic/'.$row['ebook_cover_pic'].'" style="border-radius:50%" weidth="35px" height="35px" /></td>
                                         <td>'.$row['ebook_title'].'</td>
-                                        <td>'.mysqli_fetch_array($result4)[0].'</td>
-                                    </tr>';
+                                        <td>'.$data4[0].'</td>
+                                        <td>'.$data4[1].'</td>
+                                    ';
                                     $index++;
                                 }
                             ?>

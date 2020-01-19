@@ -52,7 +52,7 @@
         $category_id = $_POST['category_id'];
         $author_id = $_POST['author_id'];
         $publisher_id = $_POST['publisher_id'];
-        $price = $_POST['price'];
+        $price = (float)$_POST['price'];
         $description = $_POST['description'];
         $coverpic = $_FILES['coverpic'];
         $pdf = $_FILES['pdf'];
@@ -92,7 +92,7 @@
         $category_id = $_POST['category_id'];
         $author_id = $_POST['author_id'];
         $publisher_id = $_POST['publisher_id'];
-        $price = $_POST['price'];
+        $price = (float)$_POST['price'];
         $description = $_POST['description'];
         $coverpic = $_FILES['coverpic'];
         $pdf = $_FILES['pdf'];
@@ -102,7 +102,7 @@
 
         if($coverpic['name']==""&&$pdf['name']==""){
 
-            $query = "update ebook set title='$title', category_id=$category_id, author_id=$author_id, publisher_id=$publisher_id, price='$price', description='$description' where ebook_id=".$ebook_id;
+            $query = "update ebook set title='$title', category_id=$category_id, author_id=$author_id, publisher_id=$publisher_id, price=$price, description='$description' where ebook_id=".$ebook_id;
             mysqli_query($con,$query);
 
         }else if($coverpic['name']!=""&&$pdf['name']!=""){
@@ -122,7 +122,7 @@
             move_uploaded_file($coverpic['tmp_name'],$target_coverpic);
             move_uploaded_file($pdf['tmp_name'],$target_pdf);
 
-            $query = "update ebook set title='$title', category_id=$category_id, author_id=$author_id, publisher_id=$publisher_id, price='$price', description='$description', cover_pic='$coverpic_name', pdf_name='$pdf_name' where ebook_id=".$ebook_id;
+            $query = "update ebook set title='$title', category_id=$category_id, author_id=$author_id, publisher_id=$publisher_id, price=$price, description='$description', cover_pic='$coverpic_name', pdf_name='$pdf_name' where ebook_id=".$ebook_id;
             mysqli_query($con,$query);
 
         }else if($coverpic['name']!=""){
@@ -137,7 +137,7 @@
 
             move_uploaded_file($coverpic['tmp_name'],$target_coverpic);
 
-            $query = "update ebook set title='$title', category_id=$category_id, author_id=$author_id, publisher_id=$publisher_id, price='$price', description='$description', cover_pic='$coverpic_name' where ebook_id=".$ebook_id;
+            $query = "update ebook set title='$title', category_id=$category_id, author_id=$author_id, publisher_id=$publisher_id, price=$price, description='$description', cover_pic='$coverpic_name' where ebook_id=".$ebook_id;
             mysqli_query($con,$query);
 
         }else if($pdf['name']!=""){
@@ -152,7 +152,7 @@
 
             move_uploaded_file($pdf['tmp_name'],$target_pdf);
 
-            $query = "update ebook set title='$title', category_id=$category_id, author_id=$author_id, publisher_id=$publisher_id, price='$price', description='$description', pdf_name='$pdf_name' where ebook_id=".$ebook_id;
+            $query = "update ebook set title='$title', category_id=$category_id, author_id=$author_id, publisher_id=$publisher_id, price=$price, description='$description', pdf_name='$pdf_name' where ebook_id=".$ebook_id;
             mysqli_query($con,$query);
 
         }
