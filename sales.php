@@ -155,15 +155,15 @@
                                 
                                     }else if(strcmp($from,"form-this-month-sales")==0){
                                 
-                                        $result4 = mysqli_query($con,"select count(purchasing_records.ebook_id) from ebook inner join purchasing_records on purchasing_records.ebook_id = ebook.ebook_id where purchasing_records.ebook_id=".$row['ebook_ebook_id']." and purchasing_records.date like '$year/$month%' and ebook.admin_id=".$admin_id."");
+                                        $result4 = mysqli_query($con,"select count(purchasing_records.ebook_id), sum(purchasing_records.sold_price) from ebook inner join purchasing_records on purchasing_records.ebook_id = ebook.ebook_id where purchasing_records.ebook_id=".$row['ebook_ebook_id']." and purchasing_records.date like '$year/$month%' and ebook.admin_id=".$admin_id."");
                                 
                                     }else if(strcmp($from,"form-today-sales")==0){
                                 
-                                        $result4 = mysqli_query($con,"select count(purchasing_records.ebook_id) from ebook inner join purchasing_records on purchasing_records.ebook_id = ebook.ebook_id where purchasing_records.ebook_id=".$row['ebook_ebook_id']." and purchasing_records.date like '$year/$month/$date%' and ebook.admin_id=".$admin_id."");
+                                        $result4 = mysqli_query($con,"select count(purchasing_records.ebook_id), sum(purchasing_records.sold_price) from ebook inner join purchasing_records on purchasing_records.ebook_id = ebook.ebook_id where purchasing_records.ebook_id=".$row['ebook_ebook_id']." and purchasing_records.date like '$year/$month/$date%' and ebook.admin_id=".$admin_id."");
                                 
                                     }else if(strcmp($from,"form-total-sales")==0){
                                 
-                                        $result4 = mysqli_query($con,"select count(purchasing_records.ebook_id) from ebook inner join purchasing_records on purchasing_records.ebook_id = ebook.ebook_id where purchasing_records.ebook_id=".$row['ebook_ebook_id']." and ebook.admin_id=".$admin_id."");
+                                        $result4 = mysqli_query($con,"select count(purchasing_records.ebook_id), sum(purchasing_records.sold_price) from ebook inner join purchasing_records on purchasing_records.ebook_id = ebook.ebook_id where purchasing_records.ebook_id=".$row['ebook_ebook_id']." and ebook.admin_id=".$admin_id."");
                                 
                                     }else {
                                         header('Location:dashboard.php');
