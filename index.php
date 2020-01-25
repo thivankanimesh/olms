@@ -216,7 +216,7 @@
                 foreach($row_list as $row){
             
                     echo '<div class="col-sm-2">';
-                        echo '<div class="card" style="width:150px;height:280px">';
+                        echo '<div class="card" style="width:130px;height:280px">';
                             echo '<div class="row">';
                                 echo '<div class="col" align="center">';
                                     echo '<img class="card-img-top" src="resources/uploads/admins/ebooks/coverpic/'.$row['cover_pic'].'" height="120px" width="90px" >';
@@ -252,7 +252,7 @@
                         echo '</div>';
                     echo '</div>';
 
-                    if($count%2==(int)0){
+                    if($count%6==(int)0){
                         echo '</div>';
                         echo '<div class="row">';
                     }
@@ -295,7 +295,7 @@
                     </div>
                 </div>
                 <hr />
-                <p style="text-align: center; color: white; font-size: 10px;">© 2019 Online Libary System Pvt(Ltd). All Right Reserved</p>
+                <p style="text-align: center; color: white; font-size: 10px;">© 2020 Online Libary System Pvt(Ltd). All Right Reserved</p>
             </div>
         </footer>
 </body>
