@@ -133,7 +133,7 @@
                 <?php 
                     $query = "select sum(ebook.price) as total_amount from shoppingcart inner join ebook on ebook.ebook_id = shoppingcart.ebook_id";
                     $result = mysqli_query($con, $query);
-                    echo '<p style="color:black; background-color:white">Total : '.mysqli_fetch_array($result)[0].'<p>';
+                    echo '<p style="color:white; background-color:#343a40; padding:5px">Total : '.mysqli_fetch_array($result)[0].'<p>';
                 ?>
             </div>
         </div>
