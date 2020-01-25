@@ -17,7 +17,7 @@
                 <?php
                 if(isset($_SESSION["user-logged"])){
                             if(isset($_SESSION["added-to-shoppingcart"])){
-                                echo '<li class="nav-item"><form method="POST" action="shoppingcart.php"><button name="form-main-header-shoppingcart" class="btn btn-sm btn-primary" style="margin-right: 5px" type="submit">Shopping Cart : '.$shoppingcart_item_count.'</button></form></li>';
+                                echo '<li class="nav-item"><form method="POST" action="shoppingcart.php"><button name="form-main-header-shoppingcart" class="btn btn-sm btn-primary" style="margin-right: 5px" type="submit"><i class="fa fa-shopping-cart"></i> '.$shoppingcart_item_count.'</button></form></li>';
                             }
                             echo '<li class="nav-item"><form action="account.php" method="POST"><button name="form-main-header-account" class="btn btn-sm btn-primary" style="margin-right: 5px; border-radius: 10px;" type="submit">Account</button></form></li>';
                             echo '<li class="nav-item"><form action="user-logout.php" method="POST"><button name="form-main-header-user-logout" class="btn btn-sm btn-danger" style="margin-right: 5px; border-radius: 10px;" type="submit">Logout</button></form></li>';
