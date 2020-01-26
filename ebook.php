@@ -2,8 +2,8 @@
 
     session_start();
 
-    if(isset($_SESSION["admin-logged"])){
-        $admin_id = $_SESSION["admin-logged"];
+    if(isset($_SESSION["seller-logged"])){
+        $seller_id = $_SESSION["seller-logged"];
     }else{
         header('Location:index.php');
     }
@@ -20,7 +20,7 @@
         $page = $_GET['page'];
     }
 
-    $result = mysqli_query($con,"select count(ebook_id) from ebook inner join admin on admin.admin_id = ebook.admin_id");
+    $result = mysqli_query($con,"select count(ebook_id) from ebook inner join seller on seller.seller_id = ebook.seller_id");
     $rows_array = mysqli_fetch_array($result);
 
     $ebook_count = $rows_array[0];
@@ -37,7 +37,7 @@
 
     $row_list = array();
 
-    $result = mysqli_query($con,"select ebook.*, author.author_id as author_author_id, author.fname as author_fname, author.lname as author_lname, publisher.publisher_id as publisher_publisher_id, publisher.fname as publisher_fname, publisher.lname as publisher_lname, category.category_id as category_category_id, category.name as category_name from ebook inner join admin on admin.admin_id = ebook.admin_id inner join author on ebook.author_id = author.author_id inner join publisher on publisher.publisher_id = ebook.publisher_id inner join category on category.category_id = ebook.category_id limit $start, $end");
+    $result = mysqli_query($con,"select ebook.*, author.author_id as author_author_id, author.fname as author_fname, author.lname as author_lname, publisher.publisher_id as publisher_publisher_id, publisher.fname as publisher_fname, publisher.lname as publisher_lname, category.category_id as category_category_id, category.name as category_name from ebook inner join seller on seller.seller_id = ebook.seller_id inner join author on ebook.author_id = author.author_id inner join publisher on publisher.publisher_id = ebook.publisher_id inner join category on category.category_id = ebook.category_id limit $start, $end");
     
     while($row = mysqli_fetch_array($result)){
         $row_list[] = $row;
@@ -80,7 +80,7 @@
             }
         }
 
-        $query = "insert into ebook (title,category_id,author_id,publisher_id,price,description,cover_pic,pdf_name,admin_id) values ('$title',$category_id,$author_id,$publisher_id,$price,'$description','$coverpic_name','$pdf_name',$admin_id)";
+        $query = "insert into ebook (title,category_id,author_id,publisher_id,price,description,cover_pic,pdf_name,seller_id) values ('$title',$category_id,$author_id,$publisher_id,$price,'$description','$coverpic_name','$pdf_name',$seller_id)";
         mysqli_query($con,$query);
 
         header('Location:ebook.php?page='.$page);

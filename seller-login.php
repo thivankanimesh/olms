@@ -9,7 +9,7 @@
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $query = "select * from admin where email = '$email'";
+    $query = "select * from seller where email = '$email'";
 
     $result = mysqli_query($con,$query);
 
@@ -18,7 +18,7 @@
     $row = $result->fetch_object();
 
     if(password_verify($password,$row->password)){
-        $_SESSION["admin-logged"]="$row->admin_id";
+        $_SESSION["seller-logged"]="$row->seller_id";
         header('Location:dashboard.php');
 
     }else{

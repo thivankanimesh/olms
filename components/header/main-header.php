@@ -22,13 +22,13 @@
                             echo '<li class="nav-item"><form action="account.php" method="POST"><button name="form-main-header-account" class="btn btn-sm btn-primary" style="margin-right: 5px; border-radius: 10px;" type="submit">Account</button></form></li>';
                             echo '<li class="nav-item"><form action="user-logout.php" method="POST"><button name="form-main-header-user-logout" class="btn btn-sm btn-danger" style="margin-right: 5px; border-radius: 10px;" type="submit">Logout</button></form></li>';
                     
-                }else if(isset($_SESSION["admin-logged"])){
+                }else if(isset($_SESSION["seller-logged"])){
                         echo '<li class="nav-item"><form action="dashboard.php" method="POST"><button name="form-main-header-seller-dashboard" class="btn btn-sm btn-primary" style="margin-right: 5px; border-radius: 10px;" type="submit">Seller Dashboard</button></form></li>';
-                        echo '<li class="nav-item"><form action="admin-logout.php" method="POST"><button name="form-main-header-seller-logout" class="btn btn-sm btn-danger" style="margin-right: 5px; border-radius: 10px;" type="submit">Seller Logout</button></form></li>';
+                        echo '<li class="nav-item"><form action="seller-logout.php" method="POST"><button name="form-main-header-seller-logout" class="btn btn-sm btn-danger" style="margin-right: 5px; border-radius: 10px;" type="submit">Seller Logout</button></form></li>';
                 
                 }else{
-                        echo '<li class="nav-item"><button type="button" class="btn btn-sm btn-danger" style="margin-right: 5px; border-radius: 10px; height: 30px;" data-toggle="modal" data-target="#admin-register-modal">Seller Register</button></li>';
-                        echo '<li class="nav-item"><button type="button" class="btn btn-sm btn-danger" style="margin-right: 5px; border-radius: 10px; height: 30px;" data-toggle="modal" data-target="#admin-login-modal">Seller Login</button></li>';
+                        echo '<li class="nav-item"><button type="button" class="btn btn-sm btn-danger" style="margin-right: 5px; border-radius: 10px; height: 30px;" data-toggle="modal" data-target="#seller-register-modal">Seller Register</button></li>';
+                        echo '<li class="nav-item"><button type="button" class="btn btn-sm btn-danger" style="margin-right: 5px; border-radius: 10px; height: 30px;" data-toggle="modal" data-target="#seller-login-modal">Seller Login</button></li>';
                         echo '<li class="nav-item"><button type="button" class="btn btn-sm btn-danger" style="margin-right: 5px; border-radius: 10px; height: 30px;" data-toggle="modal" data-target="#user-register-modal">User Register</button></li>';
                         echo '<li class="nav-item"><button type="button" class="btn btn-sm btn-danger" style="margin-right: 5px; border-radius: 10px; height: 30px;" data-toggle="modal" data-target="#user-login-modal">User Login</button></li>';
                     

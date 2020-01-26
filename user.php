@@ -2,10 +2,10 @@
 
     session_start();
 
-    $admin_id;
+    $seller_id;
 
-    if(isset($_SESSION["admin-logged"])){
-        $admin_id = $_SESSION["admin-logged"];
+    if(isset($_SESSION["seller-logged"])){
+        $seller_id = $_SESSION["seller-logged"];
     }else{
         header('Location:index.php');
     }

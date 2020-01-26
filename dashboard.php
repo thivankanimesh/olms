@@ -1,10 +1,10 @@
 <?php 
     session_start();
 
-    $admin_id;
+    $seller_id;
 
-    if(isset($_SESSION["admin-logged"])){
-        $admin_id = $_SESSION["admin-logged"];
+    if(isset($_SESSION["seller-logged"])){
+        $seller_id = $_SESSION["seller-logged"];
     }else{
         header('Location:index.php');
     }
@@ -24,25 +24,25 @@
     $user_count = $user_array[0];
 
     // Getting ebook count
-    $query = "select count(ebook_id) from ebook inner join admin on admin.admin_id = ebook.admin_id where ebook.admin_id=".$admin_id;
+    $query = "select count(ebook_id) from ebook inner join seller on seller.seller_id = ebook.seller_id where ebook.seller_id=".$seller_id;
     $ebook_result = mysqli_query($con,$query);
     $ebook_array = mysqli_fetch_array($ebook_result);
     $ebook_count = $ebook_array[0];
 
     // Getting category count
-    $query = "select count(category_id) from category inner join admin on admin.admin_id = category.admin_id where category.admin_id=".$admin_id;
+    $query = "select count(category_id) from category inner join seller on seller.seller_id = category.seller_id where category.seller_id=".$seller_id;
     $category_result = mysqli_query($con,$query);
     $category_array = mysqli_fetch_array($category_result);
     $category_count = $category_array[0];
 
     // Getting author count
-    $query = "select count(author_id) from author inner join admin on admin.admin_id = author.admin_id where author.admin_id=".$admin_id;
+    $query = "select count(author_id) from author inner join seller on seller.seller_id = author.seller_id where author.seller_id=".$seller_id;
     $author_result = mysqli_query($con,$query);
     $author_array = mysqli_fetch_array($author_result);
     $author_count = $author_array[0];
 
     // Getting publisher count
-    $query = "select count(publisher_id) from publisher inner join admin on admin.admin_id = publisher.admin_id where publisher.admin_id=".$admin_id;
+    $query = "select count(publisher_id) from publisher inner join seller on seller.seller_id = publisher.seller_id where publisher.seller_id=".$seller_id;
     $publisher_result = mysqli_query($con,$query);
     $publisher_array = mysqli_fetch_array($publisher_result);
     $publisher_count = $publisher_array[0];
@@ -56,25 +56,25 @@
     $date = date("d");
 
     // Geting this year sales count
-    $query6 = "select count(purchasing_record_id) from purchasing_records inner join ebook on ebook.ebook_id = purchasing_records.ebook_id where date like '$year/%' and ebook.admin_id=$admin_id";
+    $query6 = "select count(purchasing_record_id) from purchasing_records inner join ebook on ebook.ebook_id = purchasing_records.ebook_id where date like '$year/%' and ebook.seller_id=$seller_id";
     $result6 = mysqli_query($con,$query6);
     $array6 = mysqli_fetch_array($result6);
     $this_year_sales_count = $array6[0];
 
     // Geting this month sales count
-    $query7 = "select count(purchasing_record_id) from purchasing_records inner join ebook on ebook.ebook_id = purchasing_records.ebook_id where date like '$year/$month/%' and ebook.admin_id=$admin_id";
+    $query7 = "select count(purchasing_record_id) from purchasing_records inner join ebook on ebook.ebook_id = purchasing_records.ebook_id where date like '$year/$month/%' and ebook.seller_id=$seller_id";
     $result7 = mysqli_query($con,$query7);
     $array7 = mysqli_fetch_array($result7);
     $this_month_sales_count = $array7[0];
 
     // Geting today sales count
-    $query8 = "select count(purchasing_record_id) from purchasing_records inner join ebook on ebook.ebook_id = purchasing_records.ebook_id where date like '$year/$month/$date' and ebook.admin_id=$admin_id";
+    $query8 = "select count(purchasing_record_id) from purchasing_records inner join ebook on ebook.ebook_id = purchasing_records.ebook_id where date like '$year/$month/$date' and ebook.seller_id=$seller_id";
     $result8 = mysqli_query($con,$query8);
     $array8 = mysqli_fetch_array($result8);
     $today_sales_count = $array8[0];
 
     // Total Sales
-    $query9 = "select count(purchasing_record_id) from purchasing_records inner join ebook on ebook.ebook_id = purchasing_records.ebook_id where ebook.admin_id=$admin_id";
+    $query9 = "select count(purchasing_record_id) from purchasing_records inner join ebook on ebook.ebook_id = purchasing_records.ebook_id where ebook.seller_id=$seller_id";
     $result9 = mysqli_query($con,$query9);
     $array9 = mysqli_fetch_array($result9);
     $total_sales_count = $array9[0];
@@ -262,7 +262,7 @@
 
                                 $number = 6 - $i;
                                 $day = date("Y/m/d",strtotime(date('Y/m/d').' -'.$number.' days')); 
-                                $query10 = "select count(purchasing_records.purchasing_record_id) from purchasing_records inner join ebook on ebook.ebook_id = purchasing_records.ebook_id where purchasing_records.date='$day' and ebook.admin_id=$admin_id";
+                                $query10 = "select count(purchasing_records.purchasing_record_id) from purchasing_records inner join ebook on ebook.ebook_id = purchasing_records.ebook_id where purchasing_records.date='$day' and ebook.seller_id=$seller_id";
                                 $result10 = mysqli_query($con,$query10);
 
                                 echo 'var d = new Date();';

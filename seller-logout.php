@@ -6,7 +6,7 @@
 
     session_start();
 
-    unset($_SESSION["admin-logged"]);
+    unset($_SESSION["seller-logged"]);
 
     header('Location:index.php');
 ?>

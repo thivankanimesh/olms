@@ -1,10 +1,10 @@
 <?php
     session_start();
 
-    $admin_id;
+    $seller_id;
 
-    if(isset($_SESSION["admin-logged"])){
-        $admin_id = $_SESSION["admin-logged"];
+    if(isset($_SESSION["seller-logged"])){
+        $seller_id = $_SESSION["seller-logged"];
     }else{
         header('Location:index.php');
     }
@@ -20,7 +20,7 @@
         $page = $_GET['page'];
     }
 
-    $result = mysqli_query($con,"select count(category_id) from category inner join admin on admin.admin_id = category.admin_id");
+    $result = mysqli_query($con,"select count(category_id) from category inner join seller on seller.seller_id = category.seller_id");
     $rows_array = mysqli_fetch_array($result);
 
     $author_count = $rows_array[0];
@@ -34,7 +34,7 @@
 
 <?php
     $row_list = array();
-    $result = mysqli_query($con,"select*from category where admin_id = $admin_id limit $start, $end");
+    $result = mysqli_query($con,"select*from category where seller_id = $seller_id limit $start, $end");
 
     while($row = mysqli_fetch_array($result)){
         $row_list[] = $row;
@@ -48,7 +48,7 @@ if(isset($_POST["form-add-category"])){
     $name = $_POST['name'];
     $description = $_POST['description'];
 
-    $query = "insert into category (name,description,admin_id) values ('$name','$description',$admin_id)";
+    $query = "insert into category (name,description,seller_id) values ('$name','$description',$seller_id)";
 
     mysqli_query($con,$query);
 
