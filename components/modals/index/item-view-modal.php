@@ -9,7 +9,7 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-sm-6">
-                            <img class="img-fluid" src="resources/uploads/admins/ebooks/coverpic/<?php echo $row['cover_pic']?>" alt="" />
+                            <img class="img-fluid" src="resources/uploads/sellers/ebooks/coverpic/<?php echo $row['cover_pic']?>" alt="" />
                         </div>
                         <div class="col-sm-6">
                             <div class="row">

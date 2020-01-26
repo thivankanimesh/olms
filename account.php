@@ -51,7 +51,7 @@
 
         $pdf_name_to_download = $_GET['pdf_name_to_download'];
 
-        $file = "resources/uploads/admins/ebooks/pdf/$pdf_name_to_download";
+        $file = "resources/uploads/sellers/ebooks/pdf/$pdf_name_to_download";
 
         $file_type = filetype($file);
 
@@ -124,7 +124,7 @@
                             foreach($row_list as $row){
                                 echo '<tr>';
                                     echo '<th scope="row">'.$index.'</th>';
-                                    echo '<td><img src="resources/uploads/admins/ebooks/coverpic/'.$row['ebook_cover_pic'].'" style="border-radius:50%" weidth="35px" height="35px" /></td>';
+                                    echo '<td><img src="resources/uploads/sellers/ebooks/coverpic/'.$row['ebook_cover_pic'].'" style="border-radius:50%" weidth="35px" height="35px" /></td>';
                                     echo '<td>'.$row["ebook_title"].'</td>';
                                     echo '<td>'.$row['ebook_description'].'</td>';
                                     echo '<td>'.$row['category_name'].'</td>';

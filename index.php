@@ -220,7 +220,7 @@
                         echo '<div class="card" style="width:130px;height:280px">';
                             echo '<div class="row">';
                                 echo '<div class="col" align="center">';
-                                    echo '<img class="card-img-top" src="resources/uploads/admins/ebooks/coverpic/'.$row['cover_pic'].'" height="120px" width="90px" >';
+                                    echo '<img class="card-img-top" src="resources/uploads/sellers/ebooks/coverpic/'.$row['cover_pic'].'" height="120px" width="90px" >';
                                 echo '</div>';
                             echo '</div>';
                             echo '<div class="card-body">';

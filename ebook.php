@@ -61,7 +61,7 @@
         $pdf_name;
         
         if($coverpic['name']!=""){
-            $target_dir = "resources/uploads/admins/ebooks/coverpic/";
+            $target_dir = "resources/uploads/sellers/ebooks/coverpic/";
             $file_name = rand(1,100000000000).$coverpic['name'];
             $coverpic_name = $file_name;
             $target_file = $target_dir.basename($file_name);
@@ -71,7 +71,7 @@
         }
 
         if($pdf['name']!=""){
-            $target_dir = "resources/uploads/admins/ebooks/pdf/";
+            $target_dir = "resources/uploads/sellers/ebooks/pdf/";
             $file_name = rand(1,100000000000).$pdf['name'];
             $pdf_name = $file_name;
             $target_file = $target_dir.basename($file_name);
@@ -110,8 +110,8 @@
             $coverpic_name = rand(1,100000000000).$coverpic['name'];
             $pdf_name = rand(1,100000000000).$pdf['name'];
 
-            $target_dir_for_coverpic = "resources/uploads/admins/ebooks/coverpic/";
-            $target_dir_for_pdf = "resources/uploads/admins/ebooks/pdf/";
+            $target_dir_for_coverpic = "resources/uploads/sellers/ebooks/coverpic/";
+            $target_dir_for_pdf = "resources/uploads/sellers/ebooks/pdf/";
 
             $target_coverpic = $target_dir_for_coverpic.basename($coverpic_name);
             $target_pdf = $target_dir_for_pdf.basename($pdf_name);
@@ -129,7 +129,7 @@
 
             $coverpic_name = rand(1,100000000000).$coverpic['name'];
 
-            $target_dir_for_coverpic = "resources/uploads/admins/ebooks/coverpic/";
+            $target_dir_for_coverpic = "resources/uploads/sellers/ebooks/coverpic/";
 
             $target_coverpic = $target_dir_for_coverpic.basename($coverpic_name);
 
@@ -144,7 +144,7 @@
 
             $pdf_name = rand(1,100000000000).$pdf['name'];
 
-            $target_dir_for_pdf = "resources/uploads/admins/ebooks/pdf/";
+            $target_dir_for_pdf = "resources/uploads/sellers/ebooks/pdf/";
 
             $target_pdf = $target_dir_for_pdf.basename($pdf_name);
 
@@ -163,8 +163,8 @@
 
         $ebook_id = $_POST['ebook_id'];
 
-        unlink("resources/uploads/admins/ebooks/coverpic/".basename($row['cover_pic']));
-        unlink("resources/uploads/admins/ebooks/pdf/".basename($row['pdf_name']));
+        unlink("resources/uploads/sellers/ebooks/coverpic/".basename($row['cover_pic']));
+        unlink("resources/uploads/sellers/ebooks/pdf/".basename($row['pdf_name']));
 
         $query = "delete from ebook where ebook_id=".$ebook_id;
         mysqli_query($con,$query);
@@ -236,7 +236,7 @@
                             foreach($row_list as $row){
                                 echo '<tr>';
                                     echo '<th scope="row">'.$index.'</th>';
-                                    echo '<td><img src="resources/uploads/admins/ebooks/coverpic/'.$row['cover_pic'].'" style="border-radius:50%" weidth="35px" height="35px" /></td>';
+                                    echo '<td><img src="resources/uploads/sellers/ebooks/coverpic/'.$row['cover_pic'].'" style="border-radius:50%" weidth="35px" height="35px" /></td>';
                                     echo '<td>'.$row["title"].'</td>';
                                     echo '<td>'.$row['category_name'].'</td>';
                                     echo '<td>'.$row['description'].'</td>';

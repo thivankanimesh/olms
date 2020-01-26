@@ -175,7 +175,7 @@
                                     echo '
                                         <tr>
                                             <td>'.$index.'</td>
-                                            <td><img src="resources/uploads/admins/ebooks/coverpic/'.$row['ebook_cover_pic'].'" style="border-radius:50%" weidth="35px" height="35px" /></td>
+                                            <td><img src="resources/uploads/sellers/ebooks/coverpic/'.$row['ebook_cover_pic'].'" style="border-radius:50%" weidth="35px" height="35px" /></td>
                                             <td>'.$row['ebook_title'].'</td>
                                             <td>'.$data4[0].'</td>
                                             <td>'.$data4[1].'</td>

@@ -26,14 +26,14 @@
     }else{
 
         // Creating Propic Directory
-        if(!file_exists("resources/uploads/propics/admins/")){
-            mkdir("resources/uploads/propics/admins/",0777,true);
-            exec("sudo chmod -R 777 resources/uploads/propics/admins/");
+        if(!file_exists("resources/uploads/propics/sellers/")){
+            mkdir("resources/uploads/propics/sellers/",0777,true);
+            exec("sudo chmod -R 777 resources/uploads/propics/sellers/");
         }else{
-            exec("sudo chmod -R 777 resources/uploads/propics/admins/");
+            exec("sudo chmod -R 777 resources/uploads/propics/sellers/");
         }
 
-        $target_dir = "resources/uploads/propics/admins/";
+        $target_dir = "resources/uploads/propics/sellers/";
         $file = $_FILES['propic'];
         $file_name = rand(1,100000000000).$file['name'];
         $target_file = $target_dir.basename($file_name);
@@ -55,17 +55,17 @@
         $_SESSION["seller-logged"]=$row->seller_id;
         
         // Create Other Essential Directories
-        if(!file_exists("resources/uploads/admins")){
-            mkdir("resources/uploads/admins",0777,true);
-            mkdir("resources/uploads/admins/ebooks/coverpic",0777,true);
-            mkdir("resources/uploads/admins/ebooks/pdf",0777,true);
-            exec("sudo chmod -R 777 resources/uploads/admins");
-            exec("sudo chmod -R 777 resources/uploads/admins/ebooks/coverpic");
-            exec("sudo chmod -R 777 resources/uploads/admins/ebooks/pdf");
+        if(!file_exists("resources/uploads/sellers")){
+            mkdir("resources/uploads/sellers",0777,true);
+            mkdir("resources/uploads/sellers/ebooks/coverpic",0777,true);
+            mkdir("resources/uploads/sellers/ebooks/pdf",0777,true);
+            exec("sudo chmod -R 777 resources/uploads/sellers");
+            exec("sudo chmod -R 777 resources/uploads/sellers/ebooks/coverpic");
+            exec("sudo chmod -R 777 resources/uploads/sellers/ebooks/pdf");
         }else{
-            exec("sudo chmod -R 777 resources/uploads/admins");
-            exec("sudo chmod -R 777 resources/uploads/admins/ebooks/coverpic");
-            exec("sudo chmod -R 777 resources/uploads/admins/ebooks/pdf");
+            exec("sudo chmod -R 777 resources/uploads/sellers");
+            exec("sudo chmod -R 777 resources/uploads/sellers/ebooks/coverpic");
+            exec("sudo chmod -R 777 resources/uploads/sellers/ebooks/pdf");
         }
 
         header('Location:dashboard.php');

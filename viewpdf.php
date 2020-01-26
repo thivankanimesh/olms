@@ -18,7 +18,7 @@
 
         header("Content-type: application/pdf");
         header("Content-Disposition: inline; filename=$ebook_pdf_name");
-        readfile("resources/uploads/admins/ebooks/pdf/$ebook_pdf_name");
+        readfile("resources/uploads/sellers/ebooks/pdf/$ebook_pdf_name");
 
     }
 
