@@ -1,12 +1,12 @@
-<div id="admin-login-modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="admin-register-modal-label" aria-hidden="true">
+<div id="seller-login-modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="seller-register-modal-label" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="admin-register-modal-lable">Login</h5>
+                <h5 class="modal-title" id="seller-register-modal-lable">Login</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
             </div>
             <div class="modal-body">
-                <form action="admin-login.php" method="POST">
+                <form action="seller-login.php" method="POST">
                     <div class="form-row">
                         <label class="col-form-label" for="email">Email</label>
                         <input class="form-control" name="email" type="text" placeholder="Enter Email" required/>

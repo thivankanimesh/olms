@@ -1,7 +1,7 @@
 <?php 
     // Getting Author List
     $author_row_list = array();
-    $query = "select*from author where admin_id=".$admin_id;
+    $query = "select*from author where seller_id=".$seller_id;
     $author_result = mysqli_query($con,$query);
 
     while($author_array = mysqli_fetch_array($author_result)){
@@ -10,7 +10,7 @@
     
     // Getting Category List
     $category_row_list = array();
-    $query = "select*from category where admin_id=".$admin_id;
+    $query = "select*from category where seller_id=".$seller_id;
     $category_result = mysqli_query($con,$query);
 
     while($category_array = mysqli_fetch_array($category_result)){
@@ -19,7 +19,7 @@
 
     // Getting Publisher List
     $publisher_row_list = array();
-    $query = "select*from publisher where admin_id=".$admin_id;
+    $query = "select*from publisher where seller_id=".$seller_id;
     $publisher_result = mysqli_query($con,$query);
 
     while($publisher_array = mysqli_fetch_array($publisher_result)){

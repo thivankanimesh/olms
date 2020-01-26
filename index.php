@@ -265,8 +265,8 @@
         ?>
         
         <?php 
-            require "components/modals/dashboard/admin-register-modal.php";
-            require "components/modals/dashboard/admin-login-modal.php";
+            require "components/modals/dashboard/seller-register-modal.php";
+            require "components/modals/dashboard/seller-login-modal.php";
             require "components/modals/dashboard/user-register-modal.php";
             require "components/modals/dashboard/user-login-modal.php";
         ?>

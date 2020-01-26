@@ -1,12 +1,12 @@
-<div class="modal fade bd-example-modal-lg" id="admin-register-modal" tabindex="-1" role="dialog" aria-labelledby="admin-register-modal-label" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" id="seller-register-modal" tabindex="-1" role="dialog" aria-labelledby="seller-register-modal-label" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="admin-register-modal-label">Register</h5>
+                <h5 class="modal-title" id="seller-register-modal-label">Register</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
             </div>
             <div class="modal-body">
-                <form action="admin-register.php" method="POST" enctype="multipart/form-data">
+                <form action="seller-register.php" method="POST" enctype="multipart/form-data">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label class="col-form-label" for="fname">First Name</label>

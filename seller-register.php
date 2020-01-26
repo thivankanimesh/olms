@@ -13,7 +13,7 @@
     $password = $_POST['password'];
 
     // Check email validation
-    $count_of_email_query = "select count(email) as count_of_email from admin where email = '$email'";
+    $count_of_email_query = "select count(email) as count_of_email from seller where email = '$email'";
     $result = mysqli_query($con,$count_of_email_query);
     $row = $result->fetch_object();
 
@@ -46,13 +46,13 @@
         $encrypted_password = password_hash($password, PASSWORD_BCRYPT, array('cost'=>12));
 
         // Inserting to the database
-        $query = "insert into admin (fname,lname,email,password,mobile,propic) values ('$fname','$lname','$email','$encrypted_password','$mobile','$file_name')";
+        $query = "insert into seller (fname,lname,email,password,mobile,propic) values ('$fname','$lname','$email','$encrypted_password','$mobile','$file_name')";
         mysqli_query($con,$query);
         
-        // Set admin id as session
-        $result = mysqli_query($con,"select admin_id from admin where email = '$email'");
+        // Set seller id as session
+        $result = mysqli_query($con,"select seller_id from seller where email = '$email'");
         $row = $result->fetch_object();
-        $_SESSION["admin-logged"]=$row->admin_id;
+        $_SESSION["seller-logged"]=$row->seller_id;
         
         // Create Other Essential Directories
         if(!file_exists("resources/uploads/admins")){
