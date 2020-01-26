@@ -37,7 +37,7 @@
 
     $row_list = array();
 
-    $result = mysqli_query($con,"select ebook.*, author.author_id as author_author_id, author.fname as author_fname, author.lname as author_lname, publisher.publisher_id as publisher_publisher_id, publisher.fname as publisher_fname, publisher.lname as publisher_lname, category.category_id as category_category_id, category.name as category_name from ebook inner join seller on seller.seller_id = ebook.seller_id inner join author on ebook.author_id = author.author_id inner join publisher on publisher.publisher_id = ebook.publisher_id inner join category on category.category_id = ebook.category_id limit $start, $end");
+    $result = mysqli_query($con,"select ebook.*, author.author_id as author_author_id, author.fname as author_fname, author.lname as author_lname, publisher.publisher_id as publisher_publisher_id, publisher.fname as publisher_fname, publisher.lname as publisher_lname, category.category_id as category_category_id, category.name as category_name from ebook inner join seller on seller.seller_id = ebook.seller_id inner join author on ebook.author_id = author.author_id inner join publisher on publisher.publisher_id = ebook.publisher_id inner join category on category.category_id = ebook.category_id where seller.seller_id = $seller_id limit $start, $end");
     
     while($row = mysqli_fetch_array($result)){
         $row_list[] = $row;
