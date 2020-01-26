@@ -255,6 +255,7 @@
 
                     if($count%6==(int)0){
                         echo '</div>';
+                        echo '<br />';
                         echo '<div class="row">';
                     }
 
