@@ -129,20 +129,34 @@
                 </table>
             </div>
         </div>
+
+<?php 
+
+    // Getting total amount to pay
+
+    $query = "select sum(ebook.price) as total_amount from shoppingcart inner join ebook on ebook.ebook_id = shoppingcart.ebook_id";
+    $result = mysqli_query($con, $query);
+
+    $total_amount = mysqli_fetch_array($result)[0];
+
+?>
+
         <div class="row justify-content-end">
             <div class="col-md-3 offset-md-3">
                 <?php 
-                    $query = "select sum(ebook.price) as total_amount from shoppingcart inner join ebook on ebook.ebook_id = shoppingcart.ebook_id";
-                    $result = mysqli_query($con, $query);
-                    echo '<p style="color:white; background-color:#343a40; padding:5px">Total : '.mysqli_fetch_array($result)[0].'<p>';
+                    echo '<p style="color:white; background-color:#343a40; padding:5px">Total : '.$total_amount.'<p>';
                 ?>
             </div>
         </div>
         <div class="row justify-content-end">
             <div class="col-md-3 offset-md-3">
-                <form action="payment.php" method="POST">
-                    <input name="form-checkout" class="btn btn-success" type="submit" value="Checkout" />
-                </form>
+                    <?php 
+                        echo '<input name="total" type="hidden" value="'.$total_amount.'" />';
+                    ?>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Checkout</button>
+                    <?php 
+                        require "components/modals/shoppingcart/shoppingcart-paywithpaypal-modal.php";
+                    ?>
             </div>
         </div>
     </div>
