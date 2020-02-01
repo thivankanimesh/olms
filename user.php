@@ -134,7 +134,7 @@
                             foreach($row_list as $row){
                                 echo '<tr>';
                                     echo '<th scope="row">'.$index.'</th>';
-                                    echo '<td><img src="resources/uploads/propics/users/'.$row['propic'].'" style="border-radius:50%" weidth="35px" height="35px" /></td>';
+                                    echo '<td><img src="resources/uploads/propics/users/'.$row['propic'].'" style="border-radius:50%; width: 40px; height: 40px; position: relative; overflow: hidden;" weidth="35px" height="35px" /></td>';
                                     echo '<td>'.$row["fname"].' '.$row['lname'].'</td>';
                                     echo '<td>'.$row['birthday'].'</td>';
                                     echo '<td>'.$row['gender'].'</td>';

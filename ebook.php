@@ -236,7 +236,7 @@
                             foreach($row_list as $row){
                                 echo '<tr>';
                                     echo '<th scope="row">'.$index.'</th>';
-                                    echo '<td><img src="resources/uploads/sellers/ebooks/coverpic/'.$row['cover_pic'].'" style="border-radius:50%" weidth="35px" height="35px" /></td>';
+                                    echo '<td><img src="resources/uploads/sellers/ebooks/coverpic/'.$row['cover_pic'].'" style="border-radius:50%; width: 40px; height: 40px; position: relative; overflow: hidden;" /></td>';
                                     echo '<td>'.$row["title"].'</td>';
                                     echo '<td>'.$row['category_name'].'</td>';
                                     echo '<td>'.$row['description'].'</td>';
