@@ -25,7 +25,7 @@
 
     $publisher_count = $rows_array[0];
 
-    $items_per_page = 2;
+    $items_per_page = 6;
     $required_pages = ceil($publisher_count/$items_per_page); 
 
     $start = $items_per_page*$page -$items_per_page;

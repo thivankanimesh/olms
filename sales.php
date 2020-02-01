@@ -58,7 +58,7 @@
 
     $sales_count = $rows_array2[0];
 
-    $items_per_page = 10;
+    $items_per_page = 6;
     $required_pages = ceil($sales_count/$items_per_page); 
 
     $start = $items_per_page*$page -$items_per_page;

@@ -27,7 +27,7 @@
 
     $user_count = $rows_array[0];
 
-    $items_per_page = 10;
+    $items_per_page = 6;
     $required_pages = ceil($user_count/$items_per_page); 
 
     $start = $items_per_page*$page -$items_per_page;
