@@ -60,6 +60,14 @@
                                     <p><?php echo $row['category_name']?></p>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>Seller :</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><?php echo $row['seller_fname'],' ',$row['seller_lname']?></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
