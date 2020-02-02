@@ -20,7 +20,7 @@
         $page = $_GET['page'];
     }
 
-    $result = mysqli_query($con,"select count(ebook_id) from ebook inner join seller on seller.seller_id = ebook.seller_id");
+    $result = mysqli_query($con,"select count(ebook_id) from ebook inner join seller on seller.seller_id = ebook.seller_id where ebook.seller_id=$seller_id");
     $rows_array = mysqli_fetch_array($result);
 
     $ebook_count = $rows_array[0];

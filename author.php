@@ -20,7 +20,7 @@
         $page = $_GET['page'];
     }
 
-    $result = mysqli_query($con,"select count(author_id) from author inner join seller on seller.seller_id = author.seller_id");
+    $result = mysqli_query($con,"select count(author_id) from author inner join seller on seller.seller_id = author.seller_id where author.seller_id=$seller_id");
     $rows_array = mysqli_fetch_array($result);
 
     $author_count = $rows_array[0];
