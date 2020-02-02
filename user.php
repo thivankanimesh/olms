@@ -142,8 +142,6 @@
                                     echo '<div class="float-right">';
                                         echo '<td>';
                                             echo '<button class="btn btn-sm btn-warning" style="margin-right:10px" type="button" data-toggle="modal" data-target="#user-view-modal'.$row['user_id'].'">View</button>';
-                                            echo '<button class="btn btn-sm btn-success" style="margin-right:10px" type="button" data-toggle="modal" data-target="#user-update-modal'.$row['user_id'].'">Update</button>';
-                                            echo '<button class="btn btn-sm btn-danger" style="margin-right:10px" type="button" data-toggle="modal" data-target="#user-delete-modal'.$row['user_id'].'">Delete</button>';
                                         echo '</td>';
                                     echo '</div>';
 

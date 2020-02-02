@@ -196,7 +196,7 @@
                             <td></td>
                             <td><?php echo 'Total Income : '?></td>
                             <td>
-                                <?php echo $total_income?>
+                                <?php echo $total_income, ".00"?>
                             </td>
                         </tr>
                     </tbody>

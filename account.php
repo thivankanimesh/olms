@@ -157,6 +157,19 @@
                 </table>
             </div>
         </div>
+        <div class="row">
+            <div class="col-sm">
+                <nav>
+                    <ul class="pagination"> 
+                        <?php
+                            for($i=1;$i<=$required_pages;$i++){
+                                echo '<li class="page-item"><a class="page-link" href="account.php?page='.$i.'">'.$i.'</a></li>';
+                            }
+                        ?>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </div>
 </body>
 </html>
