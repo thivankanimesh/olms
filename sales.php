@@ -147,6 +147,9 @@
                     <tbody>
                         <tr>
                             <?php 
+
+                                $total_income = 0;
+
                                 $index=$start+1;
                                 foreach($row_list1 as $row){
 
@@ -171,6 +174,8 @@
                                     }
 
                                     $data4 = mysqli_fetch_array($result4);
+
+                                    $total_income = $total_income + $data4[1];
                                 
                                     echo '
                                         <tr>
@@ -184,6 +189,15 @@
                                     $index++;
                                 }
                             ?>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><?php echo 'Total Income : '?></td>
+                            <td>
+                                <?php echo $total_income?>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
