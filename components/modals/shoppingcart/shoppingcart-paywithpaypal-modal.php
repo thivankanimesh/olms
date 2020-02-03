@@ -16,7 +16,7 @@
         define('PAYPAL_ID','thivankanimesh-facilitator@hotmail.com');
         define('PAYPAL_SANDBOX',TRUE);
 
-        define('PAYPAL_RETURN_URL','http://localhost:80/olms/paymentsuccess.php');
+        define('PAYPAL_RETURN_URL','http://localhost:80/grepanybook/paymentsuccess.php');
         define('PAYPAL_CANCEL_URL','index.php');
         define('PAYPAL_NOTIFY_URL','index.php');
         define('PAYPAL_CURRENCY','USD');
