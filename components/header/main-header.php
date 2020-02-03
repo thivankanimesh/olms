@@ -12,7 +12,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <img src="resources/img/logo.jpg" height="40px" width="40px" />
-        <a class="navbar-brand" href="index.php" style="font-size: 25px; font-weight: bold; color:rgb(0, 0, 0);">Online Library System</a>
+        <a class="navbar-brand" href="index.php" style="font-size: 25px; font-weight: bold; color:rgb(0, 0, 0);">GrepAnyBook</a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav align-items-end ml-auto">
                 <?php

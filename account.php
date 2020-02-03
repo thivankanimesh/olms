@@ -105,6 +105,13 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-sm">
+                <div style="background-color:#003300;color:white">
+                    <h2 class="text-center">Purchased Books</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col">
             <table class="table table-hover table-boderless table-dark">
                     <thead>
