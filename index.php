@@ -209,13 +209,14 @@
         </div>
         <br />
 
-        <?php 
+        <div style="min-height: 450px">
+            <?php 
 
             $count = (int)1;
 
             echo '<div class="row">';
                 foreach($row_list as $row){
-            
+
                     echo '<div class="col-sm-2">';
                         echo '<div class="card" style="width:130px;height:280px">';
                             echo '<div class="row">';
@@ -262,8 +263,9 @@
                     $count++;
                 }
             echo '</div>';
-           
-        ?>
+
+            ?>
+        </div>
         
         <?php 
             require "components/modals/dashboard/seller-register-modal.php";
