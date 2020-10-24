@@ -216,50 +216,54 @@
 
             $count = (int)1;
 
-            echo '<div class="row">';
+            echo '<div class="card-group">';
                 foreach($row_list as $row){
 
                     echo '<div class="col-sm-2">';
-                        echo '<div class="card" style="width:130px;height:280px">';
+                        echo '<div class="card" style="width:150px; height:280px">';
                             echo '<div class="row">';
                                 echo '<div class="col" align="center">';
                                     echo '<img class="card-img-top" src="resources/uploads/sellers/ebooks/coverpic/'.$row['cover_pic'].'" height="120px" width="90px" >';
                                 echo '</div>';
                             echo '</div>';
-                            echo '<div class="card-body">';
+                            echo '<div class="card-body" style="padding-bottom: 0px">';
                                 echo '<div class="row">';
                                     echo '<div class="col" align="center">';
-                                        echo '<h5>'.$row['title'].'</h5>';
+                                        echo '<h6>'.$row['title'].'</h6>';
                                     echo '</div>';
                                 echo '</div>';
                                 echo '<div class="row">';
                                     echo '<div class="col" align="center">';
-                                        echo '<h6>';
+                                        echo '<h6 style="color: blue; font-weight: bold">';
                                             echo 'Rs:'.$row['price'];
                                         echo '</h6>';
                                     echo '</div>';
-                                    echo '<div class="col" align="center" style="padding-bottom:2px">';
-                                        echo '<button class="btn btn-sm btn-warning btn-block" style="border-radius: 10px;" type="button" data-toggle="modal" data-target="#item-view-modal'.$row['ebook_id'].'">View</button>';
-                                        require "components/modals/index/item-view-modal.php";
-                                    echo '</div>';
-                                echo '</div>';
-                                echo '<div class="row">';
-                                    echo '<div class="col" align="center">';
-                                        echo '<form action="shoppingcart.php" method="POST" onsubmit="submitt()">';
-                                            echo '<input class="btn btn-success btn-sm btn-block" style="border-radius: 10px;" name="form-add--shoppingcart-item" type="submit" value="Add To Cart" />';
-                                            echo '<input type="hidden" name="ebook_id" value="'.$row['ebook_id'].'" />';
-                                            echo '<input type="hidden" name="page" value="'.$page.'" />';
-                                        echo '</form>';
-                                    echo '</div>';
                                 echo '</div>';
                             echo '</div>';
+                            echo '<div class="card-footer" style="background-color: white; border-color: white; padding-top: 1px">';
+                                    echo '<div class="row">';
+                                        echo '<div class="col" align="center" style="padding-bottom:2px">';
+                                            echo '<button class="btn btn-sm btn-warning btn-block" style="font-size: 10px; border-radius: 6px;" type="button" data-toggle="modal" data-target="#item-view-modal'.$row['ebook_id'].'">VIEW</button>';
+                                            require "components/modals/index/item-view-modal.php";
+                                        echo '</div>';
+                                    echo '</div>';
+                                    echo '<div class="row">';
+                                        echo '<div class="col" align="center">';
+                                            echo '<form action="shoppingcart.php" method="POST" onsubmit="submitt()">';
+                                                echo '<input class="btn btn-success btn-sm btn-block" style="font-size: 10px; border-radius: 6px;" name="form-add--shoppingcart-item" type="submit" value="ADD TO CART" />';
+                                                echo '<input type="hidden" name="ebook_id" value="'.$row['ebook_id'].'" />';
+                                                echo '<input type="hidden" name="page" value="'.$page.'" />';
+                                            echo '</form>';
+                                        echo '</div>';
+                                    echo '</div>';
+                                echo '</div>';
                         echo '</div>';
                     echo '</div>';
 
                     if($count%6==(int)0){
                         echo '</div>';
                         echo '<br />';
-                        echo '<div class="row">';
+                        echo '<div class="card-group">';
                     }
 
                     $count++;
