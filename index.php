@@ -160,51 +160,53 @@
         </div>
         <br />
         
-        <div class="row">
-            <div class="col-12 text-center">
-                <form action="index.php" method="POST">
-                    <div class="row">
-                        <div class="col-sm-auto">
-                            <p>Search :</p>
-                        </div>
-                        <div class="col-sm-auto">
-                            <input name="q" type="text" placeholder="Search here..." />
-                        </div>
-                        <div class="col-sm-auto">
-                            <select class="btn btn-sm btn-light" name="category">
-                                <?php 
-                                    echo '<option value="-Select Category-" selected>-Select Category-</option>';
-                                    foreach($row_list1 as $row1){
-                                        echo '<option value="'.$row1['name'].'">'.$row1['name'].'</option>';
-                                    }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="col-sm-auto">
-                            <select class="btn btn-sm btn-light" name="author">
-                                <?php 
-                                    echo '<option value="-Select Author-" select>-Select Author-</option>';
-                                    foreach($row_list2 as $row2){
-                                        echo '<option value="'.$row2['fname'].' '.$row2['lname'].'">'.$row2['fname'].' '.$row2['lname'].'</option>';
-                                    }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="col-sm-auto">
-                            <select class="btn btn-sm btn-light" name="publisher">
-                                <?php 
-                                    echo '<option value="-Select Publisher-" select>-Select Publisher-</option>';
-                                    foreach($row_list3 as $row3){
-                                        echo '<option value="'.$row3['fname'].' '.$row3['lname'].'">'.$row3['fname'].' '.$row3['lname'].'</option>';
-                                    }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="col-sm-auto">
-                            <input class="btn btn-sm btn-dark" type="submit" name="form-search" value="Search" />
-                        </div>
-                    </div>   
-                </form>
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-12 text-center">
+                    <form action="index.php" method="POST">
+                        <div class="row">
+                            <div class="col-md-auto">
+                                <p>Search :</p>
+                            </div>
+                            <div class="col-sm-auto">
+                                <input name="q" type="text" placeholder="Search here..." />
+                            </div>
+                            <div class="col-sm-auto">
+                                <select class="btn btn-sm btn-light" name="category">
+                                    <?php 
+                                        echo '<option value="-Select Category-" selected>-Select Category-</option>';
+                                        foreach($row_list1 as $row1){
+                                            echo '<option value="'.$row1['name'].'">'.$row1['name'].'</option>';
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="col-md-auto">
+                                <select class="btn btn-sm btn-light" name="author">
+                                    <?php 
+                                        echo '<option value="-Select Author-" select>-Select Author-</option>';
+                                        foreach($row_list2 as $row2){
+                                            echo '<option value="'.$row2['fname'].' '.$row2['lname'].'">'.$row2['fname'].' '.$row2['lname'].'</option>';
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="col-md-auto">
+                                <select class="btn btn-sm btn-light" name="publisher">
+                                    <?php 
+                                        echo '<option value="-Select Publisher-" select>-Select Publisher-</option>';
+                                        foreach($row_list3 as $row3){
+                                            echo '<option value="'.$row3['fname'].' '.$row3['lname'].'">'.$row3['fname'].' '.$row3['lname'].'</option>';
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="col-sm-auto">
+                                <input class="btn btn-sm btn-dark" style="border-radius: 12px" type="submit" name="form-search" value="Search" />
+                            </div>
+                        </div>   
+                    </form>
+                </div>
             </div>
         </div>
         <br />
@@ -237,14 +239,14 @@
                                         echo '</h6>';
                                     echo '</div>';
                                     echo '<div class="col" align="center" style="padding-bottom:2px">';
-                                        echo '<button class="btn btn-warning btn-sm btn-block" type="button" data-toggle="modal" data-target="#item-view-modal'.$row['ebook_id'].'">View</button>';
+                                        echo '<button class="btn btn-sm btn-warning btn-block" style="border-radius: 10px;" type="button" data-toggle="modal" data-target="#item-view-modal'.$row['ebook_id'].'">View</button>';
                                         require "components/modals/index/item-view-modal.php";
                                     echo '</div>';
                                 echo '</div>';
                                 echo '<div class="row">';
                                     echo '<div class="col" align="center">';
                                         echo '<form action="shoppingcart.php" method="POST" onsubmit="submitt()">';
-                                            echo '<input class="btn btn-success btn-sm btn-block" name="form-add--shoppingcart-item" type="submit" value="Add To Cart" />';
+                                            echo '<input class="btn btn-success btn-sm btn-block" style="border-radius: 10px;" name="form-add--shoppingcart-item" type="submit" value="Add To Cart" />';
                                             echo '<input type="hidden" name="ebook_id" value="'.$row['ebook_id'].'" />';
                                             echo '<input type="hidden" name="page" value="'.$page.'" />';
                                         echo '</form>';
