@@ -149,15 +149,9 @@
 <body>
 
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <div>
-                    <?php 
-                        require "components/header/main-header.php";
-                    ?>
-                </div>
-            </div>
-        </div>
+            <?php 
+                require "components/header/main-header.php";
+            ?>
         <br />
         
         <div class="container">
