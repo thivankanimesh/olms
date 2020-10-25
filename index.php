@@ -216,10 +216,10 @@
 
             $count = (int)1;
 
-            echo '<div class="card-group">';
+            echo '<div class="card-deck">';
                 foreach($row_list as $row){
 
-                    echo '<div class="col-sm-2">';
+                    echo '<div class="col-lg-2">';
                         echo '<div class="card" style="width:150px; height:280px">';
                             echo '<div class="row">';
                                 echo '<div class="col" align="center">';
@@ -307,7 +307,7 @@
                     </div>
                 </div>
                 <hr />
-                <p style="text-align: center; color: white; font-size: 10px;">© 2020 Online Libary System Pvt(Ltd). All Right Reserved</p>
+                <p style="text-align: center; color: white; font-size: 10px;">© 2020 GrabAnyBook Pvt(Ltd). All Right Reserved</p>
             </div>
         </footer>
 </body>
