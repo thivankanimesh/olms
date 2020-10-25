@@ -164,15 +164,15 @@
             <div class="row justify-content-md-center">
                 <div class="col-12 text-center">
                     <form action="index.php" method="POST">
-                        <div class="row">
-                            <div class="col-md-auto">
-                                <p>Search :</p>
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label class="col-form-label" for="txt-search">Search :</label>
                             </div>
-                            <div class="col-sm-auto">
-                                <input name="q" type="text" placeholder="Search here..." />
+                            <div class="form-group col-md-2">
+                                <input id="txt-search" class="form-control" name="q" type="text" placeholder="Search here..." />
                             </div>
-                            <div class="col-sm-auto">
-                                <select class="btn btn-sm btn-light" name="category">
+                            <div class="form-group col-md-2">
+                                <select class="form-control btn btn-sm btn-light" name="category">
                                     <?php 
                                         echo '<option value="-Select Category-" selected>-Select Category-</option>';
                                         foreach($row_list1 as $row1){
@@ -181,8 +181,8 @@
                                     ?>
                                 </select>
                             </div>
-                            <div class="col-md-auto">
-                                <select class="btn btn-sm btn-light" name="author">
+                            <div class="form-group col-md-2">
+                                <select class="form-control btn btn-sm btn-light" name="author">
                                     <?php 
                                         echo '<option value="-Select Author-" select>-Select Author-</option>';
                                         foreach($row_list2 as $row2){
@@ -191,8 +191,8 @@
                                     ?>
                                 </select>
                             </div>
-                            <div class="col-md-auto">
-                                <select class="btn btn-sm btn-light" name="publisher">
+                            <div class="form-group col-md-2">
+                                <select class="form-control btn btn-sm btn-light" name="publisher">
                                     <?php 
                                         echo '<option value="-Select Publisher-" select>-Select Publisher-</option>';
                                         foreach($row_list3 as $row3){
@@ -201,8 +201,8 @@
                                     ?>
                                 </select>
                             </div>
-                            <div class="col-sm-auto">
-                                <input class="btn btn-sm btn-dark" style="border-radius: 12px" type="submit" name="form-search" value="Search" />
+                            <div class="form-group col-md-2">
+                                <input class="form-control btn btn-sm btn-outline-dark" style="border-radius: 12px" type="submit" name="form-search" value="Search" />
                             </div>
                         </div>   
                     </form>
