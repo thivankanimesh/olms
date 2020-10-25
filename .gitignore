@@ -1,9 +1,0 @@
-resources/uploads/sellers/ebooks/coverpic/*
-!resources/uploads/sellers/ebooks/coverpic/
-resources/uploads/sellers/ebooks/pdf/*
-!resources/uploads/sellers/ebooks/pdf/
-resources/uploads/propics/users/*
-!resources/uploads/propics/users/
-resources/uploads/propics/sellers/*
-!resources/uploads/propics/sellers/
-sendmail.php
