@@ -97,8 +97,8 @@
                     </div>
             </div>
             <div class="modal-footer">
-                    <input class="btn btn-secondary" type="button" value="Close" data-dismiss="modal"/>
-                    <input name="form-add-ebook" type="submit" class="btn btn-primary" value="Add" />
+                    <input class="btn btn-secondary" style="font-size: 13px;" type="button" value="Close" data-dismiss="modal"/>
+                    <input class="btn btn-primary" style="font-size: 13px;" name="form-add-ebook" type="submit" value="Add" />
                 </form>
             </div>
         </div>

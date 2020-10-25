@@ -22,8 +22,8 @@
                     <input type="hidden" name="category_id" value="<?php echo $row['category_id']?>" />
             </div>
             <div class="modal-footer">
-                    <input class="btn btn-secondary" type="button" value="Close" data-dismiss="modal" />
-                    <input class="btn btn-primary" name="form-update-category" type="submit" value="Update" />
+                    <input class="btn btn-secondary" style="font-size: 13px;" type="button" value="Close" data-dismiss="modal" />
+                    <input class="btn btn-primary" style="font-size: 13px;" name="form-update-category" type="submit" value="Update" />
                 </form>
             </div>
         </div>

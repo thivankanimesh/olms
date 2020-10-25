@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <input class="btn btn-secondary" type="button" value="Close" data-dismiss="modal" />
+                <input class="btn btn-secondary" style="font-size: 13px" type="button" value="Close" data-dismiss="modal" />
             </div>
         </div>
     </div>

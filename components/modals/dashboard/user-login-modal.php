@@ -17,8 +17,8 @@
                     </div>
             </div>
             <div class="modal-footer">
-                    <input class="btn btn-secondary" type="button" data-dismiss="modal" value="Close" />
-                    <input name="user-login-modal" class="btn btn-primary" type="submit" value="Login" />
+                    <input class="btn btn-secondary" style="font-size: 13px;" type="button" data-dismiss="modal" value="Close" />
+                    <input class="btn btn-primary" style="font-size: 13px;" name="user-login-modal" type="submit" value="Login" />
                 </form>
             </div>
         </div>

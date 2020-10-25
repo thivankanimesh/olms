@@ -11,8 +11,8 @@
                     <input type="hidden" name="category_id" value="<?php echo $row['category_id']?>" />
             </div>
             <div class="modal-footer">
-                    <input class="btn btn-secondary" type="button" value="Close" data-dismiss="modal" />
-                    <input class="btn btn-danger" name="form-delete-category" type="submit" value="Delete" />
+                    <input class="btn btn-secondary" style="font-size: 13px;" type="button" value="Close" data-dismiss="modal" />
+                    <input class="btn btn-danger" style="font-size: 13px;" name="form-delete-category" type="submit" value="Delete" />
                 </form>
             </div>
         </div>

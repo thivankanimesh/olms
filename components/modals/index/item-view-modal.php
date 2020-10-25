@@ -74,11 +74,11 @@
             </div>
             <div class="modal-footer">
                 <form action="shoppingcart.php" method="POST">
-                    <input class="btn btn-success" name="form-add--shoppingcart-item" type="submit" value="Add To Cart" />
+                    <input class="btn btn-success" style="font-size: 13px;" name="form-add--shoppingcart-item" type="submit" value="Add To Cart" />
                     <input type="hidden" name="ebook_id" value="'.$row['ebook_id'].'" />
                     <input type="hidden" name="page" value="'.$page.'" />
                 </form>
-                <input class="btn btn-secondary" type="button" value="Close" data-dismiss="modal" />
+                <input class="btn btn-secondary" style="font-size: 13px;" type="button" value="Close" data-dismiss="modal" />
             </div>
         </div>
     </div>

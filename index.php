@@ -202,7 +202,7 @@
                                 </select>
                             </div>
                             <div class="form-group col-md-2">
-                                <input class="form-control btn btn-sm btn-outline-dark" style="border-radius: 12px" type="submit" name="form-search" value="Search" />
+                                <input class="form-control btn btn-sm btn-outline-dark" style="font-size: 13px; border-radius: 12px" type="submit" name="form-search" value="Search" />
                             </div>
                         </div>   
                     </form>
@@ -211,7 +211,7 @@
         </div>
         <br />
 
-        <div style="min-height: 450px">
+        <div style="min-height: 640px">
             <?php 
 
             $count = (int)1;

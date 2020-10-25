@@ -28,10 +28,10 @@
                         echo '<li class="nav-item"><form action="seller-logout.php" method="POST"><button name="form-main-header-seller-logout" class="btn btn-sm btn-danger" style="margin-right: 5px; border-radius: 10px;" type="submit">Seller Logout</button></form></li>';
                 
                 }else{
-                        echo '<li class="nav-item"><button type="button" class="btn btn-sm btn-danger" style="margin-right: 5px; border-radius: 10px; height: 30px;" data-toggle="modal" data-target="#seller-register-modal">Seller Register</button></li>';
-                        echo '<li class="nav-item"><button type="button" class="btn btn-sm btn-danger" style="margin-right: 5px; border-radius: 10px; height: 30px;" data-toggle="modal" data-target="#seller-login-modal">Seller Login</button></li>';
-                        echo '<li class="nav-item"><button type="button" class="btn btn-sm btn-danger" style="margin-right: 5px; border-radius: 10px; height: 30px;" data-toggle="modal" data-target="#user-register-modal">User Register</button></li>';
-                        echo '<li class="nav-item"><button type="button" class="btn btn-sm btn-danger" style="margin-right: 5px; border-radius: 10px; height: 30px;" data-toggle="modal" data-target="#user-login-modal">User Login</button></li>';
+                        echo '<li class="nav-item"><button type="button" class="btn btn-sm btn-danger" style="font-size: 13px; margin-right: 5px; border-radius: 8px; height: 30px;" data-toggle="modal" data-target="#seller-register-modal">Seller Register</button></li>';
+                        echo '<li class="nav-item"><button type="button" class="btn btn-sm btn-danger" style="font-size: 13px; margin-right: 5px; border-radius: 8px; height: 30px;" data-toggle="modal" data-target="#seller-login-modal">Seller Login</button></li>';
+                        echo '<li class="nav-item"><button type="button" class="btn btn-sm btn-danger" style="font-size: 13px; margin-right: 5px; border-radius: 8px; height: 30px;" data-toggle="modal" data-target="#user-register-modal">User Register</button></li>';
+                        echo '<li class="nav-item"><button type="button" class="btn btn-sm btn-danger" style="font-size: 13px; margin-right: 5px; border-radius: 8px; height: 30px;" data-toggle="modal" data-target="#user-login-modal">User Login</button></li>';
                     
                     }
                 ?>
