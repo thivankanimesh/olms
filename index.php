@@ -266,31 +266,32 @@
     <br />
     <br />
     <br />
-    <footer style="background-color: #003320; height: 100px; width: 100%;">
-            <div class="container">
-                <br />
-                <div class="row">
-                    <div class="col-sm" style="text-align: center;">
+    <footer style="background-color: #003320;">
+            <div class="container-fluid">
+                <div class="row justify-content-center align-items-center" style="padding-top: 13px;">
+                    <div class="col-lg-2" style="text-align: center;">
                         <a href="#" style="color: white; text-decoration: none;">About Us</a>
                     </div>
-                    <div class="col-sm" style="text-align: center;">
+                    <div class="col-lg-2" style="text-align: center;">
                         <a href="#" style="color: white; text-decoration: none;">Contacts</a>
                     </div>
-                    <div class="col-sm" style="text-align: center;">
+                    <div class="col-lg-2" style="text-align: center;">
                         <a href="#" style="color: white; text-decoration: none;">Terms of Service</a>
                     </div>
-                    <div class="col-sm" style="text-align: center;">
+                    <div class="col-lg-2" style="text-align: center;">
                         <a href="#" style="color: white; text-decoration: none;">Privacy Policy</a>
                     </div>
-                    <div class="col-sm" style="text-align: center;">
+                    <div class="col-lg-2" style="text-align: center;">
                         <a href="#" style="color: white; text-decoration: none;">Blog</a>
                     </div>  
-                    <div class="col-sm" style="text-align: center;">
+                    <div class="col-lg-2" style="text-align: center;">
                         <a href="#" style="color: white; text-decoration: none;">FAQ</a>
                     </div>
                 </div>
                 <hr />
-                <p style="text-align: center; color: white; font-size: 10px;">© 2020 GrabAnyBook Pvt(Ltd). All Right Reserved</p>
+                <div class="row justify-content-center align-items-center">
+                    <p style="text-align: center; color: white; font-size: 10px;">© 2020 GrabAnyBook Pvt(Ltd). All Right Reserved</p>
+                </div>
             </div>
         </footer>
 </body>
