@@ -108,56 +108,48 @@
             </div>
         </div>
 
-        <div class="row" style="padding-top: 10px">
-            <div class="col-sm" style="padding-right: 2px;">
-                <a href="user.php" style="text-decoration: none">
-                    <div class="card text-white mb-3" style="max-width: 25rem; background-color:#760000;">
+        <div class="row justify-content-center">
+            <div class="card-deck mb-3">
+                <div class="card text-white ml-1 mr-1 mt-1 mb-1" style="min-width: 13.8rem; background-color:#760000;">
+                    <a href="user.php" style="text-decoration: none; color: white;">
                         <div class="card-body">
                             <h1><?php echo $user_count?></h1>
                             <h6>Total Users</h6>
                         </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm" style="padding-right: 2px;">
-                <a href="ebook.php" style="text-decoration: none;">
-                    <div class="card text-white mb-3" style="max-width: 25rem; background-color:#ffd033;">
+                    </a>
+                </div>
+                <div class="card text-white ml-1 mr-1 mt-1 mb-1" style="min-width: 13.8rem; background-color:#ffd033;">
+                    <a href="ebook.php" style="text-decoration: none; color: white;">
                         <div class="card-body">
                             <h1><?php echo $ebook_count?></h1>
                             <h6>Total eBooks</h6>
                         </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm" style="padding-right: 2px;">
-                <a href="category.php" style="text-decoration: none;">
-                    <div class="card text-white mb-3" style="max-width: 25rem; background-color:#00003f;">
+                    </a>
+                </div>
+                <div class="card text-white ml-1 mr-1 mt-1 mb-1" style="min-width: 13.8rem; background-color:#00003f;">
+                    <a href="category.php" style="text-decoration: none; color: white;">
                         <div class="card-body">
                             <h1><?php echo $category_count?></h1>
                             <h6>Total Categories</h6>
                         </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm" style="padding-right: 2px;">
-                <a href="author.php" style="text-decoration: none;">
-                    <div class="card text-white mb-3" style="max-width: 25rem; background-color:#252525;">
+                    </a>
+                </div>
+                <div class="card text-white ml-1 mr-1 mt-1 mb-1" style="min-width: 13.8rem; background-color:#252525;">
+                    <a href="author.php" style="text-decoration: none; color: white;">
                         <div class="card-body">
                             <h1><?php echo $author_count?></h1>
                             <h6>Total Authors</h6>
                         </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm" style="padding-right: 2px;">
-                <a href="publisher.php" style="text-decoration: none;">
-                    <div class="card text-white mb-3" style="max-width: 25rem; background-color:#93004a;">
+                    </a>
+                </div>
+                <div class="card text-white ml-1 mr-1 mt-1 mb-1" style="min-width: 13.8rem; background-color:#93004a;">
+                    <a href="publisher.php" style="text-decoration: none; color: white;">
                         <div class="card-body">
                             <h1><?php echo $publisher_count?></h1>
                             <h6>Total Publishers</h6>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="row">
